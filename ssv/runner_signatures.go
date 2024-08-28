@@ -46,6 +46,7 @@ func (b *BaseRunner) validatePartialSigMsgForSlot(
 	// Get signer
 	msgSigner := psigMsgs.Messages[0].Signer // signer is the same in all psigMsgs.Messages and len(psigMsgs.Messages) > 0 (guaranteed by psigMsgs.Validate())
 
+	// TODO: remove share loop
 	// Get committee (unique for runner)
 	var shareSample *types.Share
 	for _, share := range b.Share {

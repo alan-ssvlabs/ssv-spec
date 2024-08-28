@@ -79,6 +79,7 @@ var ConstructBaseRunnerWithShareMap = func(role types.RunnerRole, shareMap map[p
 		// Get sample instance for share and key set
 		var keySetInstance *TestKeySet
 		var shareInstance *types.Share
+		// TODO: remove share loop
 		for _, share := range shareMap {
 			keySetInstance = KeySetForShare(share)
 			shareInstance = TestingShare(keySetInstance, share.ValidatorIndex)

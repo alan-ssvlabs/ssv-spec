@@ -200,6 +200,7 @@ func (r *ValidatorRegistrationRunner) GetBeaconNode() BeaconNode {
 }
 
 func (r *ValidatorRegistrationRunner) GetShare() *types.Share {
+	// TODO: remove loop
 	for _, share := range r.BaseRunner.Share {
 		return share
 	}

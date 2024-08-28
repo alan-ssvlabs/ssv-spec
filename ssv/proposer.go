@@ -332,6 +332,7 @@ func (r *ProposerRunner) GetBeaconNode() BeaconNode {
 }
 
 func (r *ProposerRunner) GetShare() *types.Share {
+	// TODO: remove get share loop
 	// there is only one share
 	for _, share := range r.BaseRunner.Share {
 		return share

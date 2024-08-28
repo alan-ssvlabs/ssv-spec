@@ -43,6 +43,7 @@ func decideRunnerForData(r ssv.Runner, duty types.Duty, decidedValue []byte) ssv
 	if len(r.GetBaseRunner().Share) == 0 {
 		panic("no share in base runner")
 	}
+	// TODO: remove loop
 	for _, valShare := range r.GetBaseRunner().Share {
 		share = valShare
 		break
