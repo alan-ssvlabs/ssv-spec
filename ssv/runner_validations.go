@@ -15,12 +15,28 @@ func (b *BaseRunner) ValidatePreConsensusMsg(runner Runner, psigMsgs *types.Part
 		return errors.New("no running duty")
 	}
 
-	if err := b.validatePartialSigMsgForSlot(psigMsgs, b.State.StartingDuty.DutySlot()); err != nil {
+	signers := []types.OperatorID{}
+	for _, member := range runner.GetShare().Committee {
+		signers = append(signers, member.Signer)
+	}
+	if err := b.validatePartialSigMsgForSlot(psigMsgs, b.State.StartingDuty.DutySlot(), signers); err != nil {
 		return err
 	}
 
-	if err := b.validateValidatorIndexInPartialSigMsg(psigMsgs); err != nil {
-		return err
+	switch runner.(type) {
+	case *CommitteeRunner:
+		validatorIndexes := []spec.ValidatorIndex{}
+		for _, share := range runner.(*CommitteeRunner).Shares {
+			validatorIndexes = append(validatorIndexes, share.ValidatorIndex)
+		}
+		if err := b.validateValidatorIndexInPartialSigMsg(psigMsgs, validatorIndexes); err != nil {
+			return err
+		}
+	default:
+		validatorIndexes := []spec.ValidatorIndex{runner.GetShare().ValidatorIndex}
+		if err := b.validateValidatorIndexInPartialSigMsg(psigMsgs, validatorIndexes); err != nil {
+			return err
+		}
 	}
 
 	roots, domain, err := runner.expectedPreConsensusRootsAndDomain()
@@ -62,6 +78,10 @@ func (b *BaseRunner) ValidatePostConsensusMsg(runner Runner, psigMsgs *types.Par
 		return errors.New("consensus instance not decided")
 	}
 
+	signers := []types.OperatorID{}
+	for _, member := range runner.GetShare().Committee {
+		signers = append(signers, member.Signer)
+	}
 	// TODO maybe nicer to do this without switch
 	switch runner.(type) {
 	case *CommitteeRunner:
@@ -69,19 +89,19 @@ func (b *BaseRunner) ValidatePostConsensusMsg(runner Runner, psigMsgs *types.Par
 		if err := decidedValue.Decode(decidedValueBytes); err != nil {
 			return errors.Wrap(err, "failed to parse decided value to BeaconData")
 		}
-
-		return b.validatePartialSigMsgForSlot(psigMsgs, b.State.StartingDuty.DutySlot())
+		return b.validatePartialSigMsgForSlot(psigMsgs, b.State.StartingDuty.DutySlot(), signers)
 	default:
 		decidedValue := &types.ValidatorConsensusData{}
 		if err := decidedValue.Decode(decidedValueBytes); err != nil {
 			return errors.Wrap(err, "failed to parse decided value to ValidatorConsensusData")
 		}
 
-		if err := b.validatePartialSigMsgForSlot(psigMsgs, decidedValue.Duty.Slot); err != nil {
+		if err := b.validatePartialSigMsgForSlot(psigMsgs, decidedValue.Duty.Slot, signers); err != nil {
 			return err
 		}
 
-		if err := b.validateValidatorIndexInPartialSigMsg(psigMsgs); err != nil {
+		validatorIndexes := []spec.ValidatorIndex{runner.GetShare().ValidatorIndex}
+		if err := b.validateValidatorIndexInPartialSigMsg(psigMsgs, validatorIndexes); err != nil {
 			return err
 		}
 

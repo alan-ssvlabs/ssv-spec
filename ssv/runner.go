@@ -16,6 +16,7 @@ type Getters interface {
 	GetSigner() types.BeaconSigner
 	GetOperatorSigner() *types.OperatorSigner
 	GetNetwork() Network
+	GetShare() *types.Share
 }
 
 type Runner interface {
@@ -44,7 +45,6 @@ type Runner interface {
 
 type BaseRunner struct {
 	State          *State
-	Share          map[spec.ValidatorIndex]*types.Share
 	QBFTController *qbft.Controller
 	BeaconNetwork  types.BeaconNetwork
 	RunnerRoleType types.RunnerRole
@@ -56,7 +56,6 @@ type BaseRunner struct {
 
 func NewBaseRunner(
 	state *State,
-	share map[spec.ValidatorIndex]*types.Share,
 	controller *qbft.Controller,
 	beaconNetwork types.BeaconNetwork,
 	runnerRoleType types.RunnerRole,
@@ -64,7 +63,6 @@ func NewBaseRunner(
 ) *BaseRunner {
 	return &BaseRunner{
 		State:              state,
-		Share:              share,
 		QBFTController:     controller,
 		BeaconNetwork:      beaconNetwork,
 		RunnerRoleType:     runnerRoleType,
@@ -103,12 +101,12 @@ func (b *BaseRunner) baseStartNewNonBeaconDuty(runner Runner, duty *types.Valida
 }
 
 // basePreConsensusMsgProcessing is a base func that all runner implementation can call for processing a pre-consensus msg
-func (b *BaseRunner) basePreConsensusMsgProcessing(runner Runner, psigMsgs *types.PartialSignatureMessages) (bool, [][32]byte, error) {
+func (b *BaseRunner) basePreConsensusMsgProcessing(runner Runner, psigMsgs *types.PartialSignatureMessages, shares map[spec.ValidatorIndex]*types.Share) (bool, [][32]byte, error) {
 	if err := b.ValidatePreConsensusMsg(runner, psigMsgs); err != nil {
 		return false, nil, errors.Wrap(err, "invalid pre-consensus message")
 	}
 
-	hasQuorum, roots := b.basePartialSigMsgProcessing(psigMsgs, b.State.PreConsensusContainer)
+	hasQuorum, roots := b.basePartialSigMsgProcessing(psigMsgs, b.State.PreConsensusContainer, shares)
 	return hasQuorum, roots, nil
 }
 
@@ -158,12 +156,12 @@ func (b *BaseRunner) baseConsensusMsgProcessing(runner Runner, msg *types.Signed
 
 // basePostConsensusMsgProcessing is a base func that all runner implementation can call for processing a post-consensus msg
 // returns whether at least one quorum exists and the roots of the quorums
-func (b *BaseRunner) basePostConsensusMsgProcessing(runner Runner, psigMsgs *types.PartialSignatureMessages) (bool, [][32]byte, error) {
+func (b *BaseRunner) basePostConsensusMsgProcessing(runner Runner, psigMsgs *types.PartialSignatureMessages, shares map[spec.ValidatorIndex]*types.Share) (bool, [][32]byte, error) {
 	if err := b.ValidatePostConsensusMsg(runner, psigMsgs); err != nil {
 		return false, nil, errors.Wrap(err, "invalid post-consensus message")
 	}
 
-	hasQuorum, roots := b.basePartialSigMsgProcessing(psigMsgs, b.State.PostConsensusContainer)
+	hasQuorum, roots := b.basePartialSigMsgProcessing(psigMsgs, b.State.PostConsensusContainer, shares)
 	return hasQuorum, roots, nil
 }
 
@@ -171,6 +169,7 @@ func (b *BaseRunner) basePostConsensusMsgProcessing(runner Runner, psigMsgs *typ
 func (b *BaseRunner) basePartialSigMsgProcessing(
 	psigMsgs *types.PartialSignatureMessages,
 	container *PartialSigContainer,
+	shares map[spec.ValidatorIndex]*types.Share,
 ) (bool, [][32]byte) {
 	roots := make([][32]byte, 0)
 	anyQuorum := false
@@ -179,7 +178,7 @@ func (b *BaseRunner) basePartialSigMsgProcessing(
 
 		// Check if it has two signatures for the same signer
 		if container.HasSignature(msg.ValidatorIndex, msg.Signer, msg.SigningRoot) {
-			b.resolveDuplicateSignature(container, msg)
+			b.resolveDuplicateSignature(container, msg, shares[msg.ValidatorIndex].Committee)
 		} else {
 			container.AddSignature(msg)
 		}

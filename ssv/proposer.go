@@ -12,6 +12,7 @@ import (
 type ProposerRunner struct {
 	BaseRunner *BaseRunner
 
+	share          *types.Share
 	beacon         BeaconNode
 	network        Network
 	signer         types.BeaconSigner
@@ -21,7 +22,7 @@ type ProposerRunner struct {
 
 func NewProposerRunner(
 	beaconNetwork types.BeaconNetwork,
-	share map[phase0.ValidatorIndex]*types.Share,
+	share *types.Share,
 	qbftController *qbft.Controller,
 	beacon BeaconNode,
 	network Network,
@@ -31,19 +32,15 @@ func NewProposerRunner(
 	highestDecidedSlot phase0.Slot,
 ) (Runner, error) {
 
-	if len(share) != 1 {
-		return nil, errors.New("must have one share")
-	}
-
 	return &ProposerRunner{
 		BaseRunner: &BaseRunner{
 			RunnerRoleType:     types.RoleProposer,
 			BeaconNetwork:      beaconNetwork,
-			Share:              share,
 			QBFTController:     qbftController,
 			highestDecidedSlot: highestDecidedSlot,
 		},
 
+		share:          share,
 		beacon:         beacon,
 		network:        network,
 		signer:         signer,
@@ -62,7 +59,9 @@ func (r *ProposerRunner) HasRunningDuty() bool {
 }
 
 func (r *ProposerRunner) ProcessPreConsensus(signedMsg *types.PartialSignatureMessages) error {
-	quorum, roots, err := r.BaseRunner.basePreConsensusMsgProcessing(r, signedMsg)
+	// The runner has only one share
+	shareMap := map[phase0.ValidatorIndex]*types.Share{r.GetShare().ValidatorIndex: r.GetShare()}
+	quorum, roots, err := r.BaseRunner.basePreConsensusMsgProcessing(r, signedMsg, shareMap)
 	if err != nil {
 		return errors.Wrap(err, "failed processing randao message")
 	}
@@ -137,8 +136,7 @@ func (r *ProposerRunner) ProcessConsensus(signedMsg *types.SignedSSVMessage) err
 	}
 
 	msg, err := r.BaseRunner.signBeaconObject(r, r.BaseRunner.State.StartingDuty.(*types.ValidatorDuty), blkToSign,
-		cd.Duty.Slot,
-		types.DomainProposer)
+		cd.Duty.Slot, types.DomainProposer, r.GetShare())
 	if err != nil {
 		return errors.Wrap(err, "failed signing attestation data")
 	}
@@ -179,7 +177,9 @@ func (r *ProposerRunner) ProcessConsensus(signedMsg *types.SignedSSVMessage) err
 }
 
 func (r *ProposerRunner) ProcessPostConsensus(signedMsg *types.PartialSignatureMessages) error {
-	quorum, roots, err := r.BaseRunner.basePostConsensusMsgProcessing(r, signedMsg)
+	// The runner has only one share
+	shareMap := map[phase0.ValidatorIndex]*types.Share{r.GetShare().ValidatorIndex: r.GetShare()}
+	quorum, roots, err := r.BaseRunner.basePostConsensusMsgProcessing(r, signedMsg, shareMap)
 	if err != nil {
 		return errors.Wrap(err, "failed processing post consensus message")
 	}
@@ -279,7 +279,7 @@ func (r *ProposerRunner) executeDuty(duty types.Duty) error {
 	// sign partial randao
 	epoch := r.GetBeaconNode().GetBeaconNetwork().EstimatedEpochAtSlot(duty.DutySlot())
 	msg, err := r.BaseRunner.signBeaconObject(r, duty.(*types.ValidatorDuty), types.SSZUint64(epoch), duty.DutySlot(),
-		types.DomainRandao)
+		types.DomainRandao, r.GetShare())
 	if err != nil {
 		return errors.Wrap(err, "could not sign randao")
 	}
@@ -332,12 +332,7 @@ func (r *ProposerRunner) GetBeaconNode() BeaconNode {
 }
 
 func (r *ProposerRunner) GetShare() *types.Share {
-	// TODO: remove get share loop
-	// there is only one share
-	for _, share := range r.BaseRunner.Share {
-		return share
-	}
-	return nil
+	return r.share
 }
 
 func (r *ProposerRunner) GetState() *State {

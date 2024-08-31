@@ -15,6 +15,7 @@ import (
 type SyncCommitteeAggregatorRunner struct {
 	BaseRunner *BaseRunner
 
+	share          *types.Share
 	beacon         BeaconNode
 	network        Network
 	signer         types.BeaconSigner
@@ -24,7 +25,7 @@ type SyncCommitteeAggregatorRunner struct {
 
 func NewSyncCommitteeAggregatorRunner(
 	beaconNetwork types.BeaconNetwork,
-	share map[phase0.ValidatorIndex]*types.Share,
+	share *types.Share,
 	qbftController *qbft.Controller,
 	beacon BeaconNode,
 	network Network,
@@ -34,19 +35,15 @@ func NewSyncCommitteeAggregatorRunner(
 	highestDecidedSlot phase0.Slot,
 ) (Runner, error) {
 
-	if len(share) != 1 {
-		return nil, errors.New("must have one share")
-	}
-
 	return &SyncCommitteeAggregatorRunner{
 		BaseRunner: &BaseRunner{
 			RunnerRoleType:     types.RoleSyncCommitteeContribution,
 			BeaconNetwork:      beaconNetwork,
-			Share:              share,
 			QBFTController:     qbftController,
 			highestDecidedSlot: highestDecidedSlot,
 		},
 
+		share:          share,
 		beacon:         beacon,
 		network:        network,
 		signer:         signer,
@@ -65,7 +62,9 @@ func (r *SyncCommitteeAggregatorRunner) HasRunningDuty() bool {
 }
 
 func (r *SyncCommitteeAggregatorRunner) ProcessPreConsensus(signedMsg *types.PartialSignatureMessages) error {
-	quorum, roots, err := r.BaseRunner.basePreConsensusMsgProcessing(r, signedMsg)
+	// The runner has only one share
+	shareMap := map[phase0.ValidatorIndex]*types.Share{r.GetShare().ValidatorIndex: r.GetShare()}
+	quorum, roots, err := r.BaseRunner.basePreConsensusMsgProcessing(r, signedMsg, shareMap)
 	if err != nil {
 		return errors.Wrap(err, "failed processing sync committee selection proof message")
 	}
@@ -169,8 +168,7 @@ func (r *SyncCommitteeAggregatorRunner) ProcessConsensus(signedMsg *types.Signed
 		}
 
 		signed, err := r.BaseRunner.signBeaconObject(r, r.BaseRunner.State.StartingDuty.(*types.ValidatorDuty), contribAndProof,
-			cd.Duty.Slot,
-			types.DomainContributionAndProof)
+			cd.Duty.Slot, types.DomainContributionAndProof, r.share)
 		if err != nil {
 			return errors.Wrap(err, "failed to sign aggregate and proof")
 		}
@@ -214,7 +212,9 @@ func (r *SyncCommitteeAggregatorRunner) ProcessConsensus(signedMsg *types.Signed
 }
 
 func (r *SyncCommitteeAggregatorRunner) ProcessPostConsensus(signedMsg *types.PartialSignatureMessages) error {
-	quorum, roots, err := r.BaseRunner.basePostConsensusMsgProcessing(r, signedMsg)
+	// The runner has only one share
+	shareMap := map[phase0.ValidatorIndex]*types.Share{r.GetShare().ValidatorIndex: r.GetShare()}
+	quorum, roots, err := r.BaseRunner.basePostConsensusMsgProcessing(r, signedMsg, shareMap)
 	if err != nil {
 		return errors.Wrap(err, "failed processing post consensus message")
 	}
@@ -359,7 +359,7 @@ func (r *SyncCommitteeAggregatorRunner) executeDuty(duty types.Duty) error {
 			SubcommitteeIndex: subnet,
 		}
 		msg, err := r.BaseRunner.signBeaconObject(r, duty.(*types.ValidatorDuty), data, duty.DutySlot(),
-			types.DomainSyncCommitteeSelectionProof)
+			types.DomainSyncCommitteeSelectionProof, r.share)
 		if err != nil {
 			return errors.Wrap(err, "could not sign sync committee selection proof")
 		}
@@ -410,12 +410,7 @@ func (r *SyncCommitteeAggregatorRunner) GetBeaconNode() BeaconNode {
 }
 
 func (r *SyncCommitteeAggregatorRunner) GetShare() *types.Share {
-	// TODO: remove this loop
-	// there is only one share
-	for _, share := range r.BaseRunner.Share {
-		return share
-	}
-	return nil
+	return r.share
 }
 
 func (r *SyncCommitteeAggregatorRunner) GetState() *State {

@@ -92,24 +92,15 @@ func (test *MsgProcessingSpecTest) Run(t *testing.T) {
 }
 
 func (test *MsgProcessingSpecTest) runPreTesting() (*ssv.Validator, *ssv.Committee, error) {
-	var share *types.Share
-	ketSetMap := make(map[phase0.ValidatorIndex]*testingutils.TestKeySet)
-	if len(test.Runner.GetBaseRunner().Share) == 0 {
-		panic("No share in base runner for tests")
-	}
-	for _, validatorShare := range test.Runner.GetBaseRunner().Share {
-		share = validatorShare
-		break
-	}
-	for valIdx, validatorShare := range test.Runner.GetBaseRunner().Share {
-		ketSetMap[valIdx] = testingutils.KeySetForShare(validatorShare)
-	}
-
 	var v *ssv.Validator
 	var c *ssv.Committee
 	var lastErr error
 	switch test.Runner.(type) {
 	case *ssv.CommitteeRunner:
+		ketSetMap := make(map[phase0.ValidatorIndex]*testingutils.TestKeySet)
+		for valIdx, validatorShare := range test.Runner.(*ssv.CommitteeRunner).Shares {
+			ketSetMap[valIdx] = testingutils.KeySetForShare(validatorShare)
+		}
 		c = testingutils.BaseCommitteeWithRunner(ketSetMap, test.Runner.(*ssv.CommitteeRunner))
 
 		if !test.DontStartDuty {
@@ -129,7 +120,7 @@ func (test *MsgProcessingSpecTest) runPreTesting() (*ssv.Validator, *ssv.Committ
 					panic(err)
 				}
 				slot := phase0.Slot(consensusMsg.Height)
-				for _, validatorShare := range test.Runner.GetBaseRunner().Share {
+				for _, validatorShare := range test.Runner.(*ssv.CommitteeRunner).Shares {
 					test.Runner.GetSigner().(*testingutils.TestingKeyManager).AddSlashableSlot(validatorShare.
 						SharePubKey, slot)
 				}
@@ -137,7 +128,7 @@ func (test *MsgProcessingSpecTest) runPreTesting() (*ssv.Validator, *ssv.Committ
 		}
 
 	default:
-		v = testingutils.BaseValidator(testingutils.KeySetForShare(share))
+		v = testingutils.BaseValidator(testingutils.KeySetForShare(test.Runner.GetShare()))
 		v.DutyRunners[test.Runner.GetBaseRunner().RunnerRoleType] = test.Runner
 		v.Network = test.Runner.GetNetwork()
 

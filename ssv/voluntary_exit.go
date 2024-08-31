@@ -13,6 +13,7 @@ import (
 type VoluntaryExitRunner struct {
 	BaseRunner *BaseRunner
 
+	share          *types.Share
 	beacon         BeaconNode
 	network        Network
 	signer         types.BeaconSigner
@@ -24,24 +25,20 @@ type VoluntaryExitRunner struct {
 
 func NewVoluntaryExitRunner(
 	beaconNetwork types.BeaconNetwork,
-	share map[phase0.ValidatorIndex]*types.Share,
+	share *types.Share,
 	beacon BeaconNode,
 	network Network,
 	signer types.BeaconSigner,
 	operatorSigner *types.OperatorSigner,
 ) (Runner, error) {
 
-	if len(share) != 1 {
-		return nil, errors.New("must have one share")
-	}
-
 	return &VoluntaryExitRunner{
 		BaseRunner: &BaseRunner{
 			RunnerRoleType: types.RoleVoluntaryExit,
 			BeaconNetwork:  beaconNetwork,
-			Share:          share,
 		},
 
+		share:          share,
 		beacon:         beacon,
 		network:        network,
 		signer:         signer,
@@ -62,7 +59,9 @@ func (r *VoluntaryExitRunner) HasRunningDuty() bool {
 // ProcessPreConsensus Check for quorum of partial signatures over VoluntaryExit and,
 // if has quorum, constructs SignedVoluntaryExit and submits to BeaconNode
 func (r *VoluntaryExitRunner) ProcessPreConsensus(signedMsg *types.PartialSignatureMessages) error {
-	quorum, roots, err := r.BaseRunner.basePreConsensusMsgProcessing(r, signedMsg)
+	// The runner has only one share
+	shareMap := map[phase0.ValidatorIndex]*types.Share{r.GetShare().ValidatorIndex: r.GetShare()}
+	quorum, roots, err := r.BaseRunner.basePreConsensusMsgProcessing(r, signedMsg, shareMap)
 	if err != nil {
 		return errors.Wrap(err, "failed processing voluntary exit message")
 	}
@@ -130,7 +129,7 @@ func (r *VoluntaryExitRunner) executeDuty(duty types.Duty) error {
 
 	// get PartialSignatureMessage with voluntaryExit root and signature
 	msg, err := r.BaseRunner.signBeaconObject(r, duty.(*types.ValidatorDuty), voluntaryExit, duty.DutySlot(),
-		types.DomainVoluntaryExit)
+		types.DomainVoluntaryExit, r.GetShare())
 	if err != nil {
 		return errors.Wrap(err, "could not sign VoluntaryExit object")
 	}
@@ -198,10 +197,7 @@ func (r *VoluntaryExitRunner) GetBeaconNode() BeaconNode {
 }
 
 func (r *VoluntaryExitRunner) GetShare() *types.Share {
-	for _, share := range r.BaseRunner.Share {
-		return share
-	}
-	return nil
+	return r.share
 }
 
 func (r *VoluntaryExitRunner) GetState() *State {

@@ -421,16 +421,10 @@ func fixCommitteeForRun(t *testing.T, committeeMap map[string]interface{}) *ssv.
 
 	for slot := range c.Runners {
 
-		var shareInstance *types.Share
-		for _, share := range c.Runners[slot].BaseRunner.Share {
-			shareInstance = share
-			break
-		}
-
 		fixedRunner := fixRunnerForRun(
 			t,
 			committeeMap["Runners"].(map[string]interface{})[fmt.Sprintf("%v", slot)].(map[string]interface{}),
-			testingutils.KeySetForShare(shareInstance),
+			testingutils.KeySetForShare(c.Runners[slot].GetShare()),
 		)
 		c.Runners[slot] = fixedRunner.(*ssv.CommitteeRunner)
 	}

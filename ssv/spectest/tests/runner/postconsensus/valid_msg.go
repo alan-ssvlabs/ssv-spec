@@ -38,18 +38,7 @@ func decideRunner(r ssv.Runner, duty types.Duty, cd *types.ValidatorConsensusDat
 }
 
 func decideRunnerForData(r ssv.Runner, duty types.Duty, decidedValue []byte) ssv.Runner {
-
-	var share *types.Share
-	if len(r.GetBaseRunner().Share) == 0 {
-		panic("no share in base runner")
-	}
-	// TODO: remove loop
-	for _, valShare := range r.GetBaseRunner().Share {
-		share = valShare
-		break
-	}
-
-	quorum := (uint64(len(share.Committee)-1)/3)*2 + 1
+	quorum := (uint64(len(r.GetShare().Committee)-1)/3)*2 + 1
 	r.GetBaseRunner().State = ssv.NewRunnerState(quorum, duty)
 	r.GetBaseRunner().State.RunningInstance = qbft.NewInstance(
 		r.GetBaseRunner().QBFTController.GetConfig(),

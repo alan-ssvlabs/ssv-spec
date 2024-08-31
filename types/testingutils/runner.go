@@ -72,6 +72,7 @@ var ConstructBaseRunnerWithShareMap = func(role types.RunnerRole, shareMap map[p
 	var opSigner *types.OperatorSigner
 	var valCheck qbft.ProposedValueCheckF
 	var contr *qbft.Controller
+	var shareSample *types.Share
 
 	km := NewTestingKeyManager()
 
@@ -79,8 +80,8 @@ var ConstructBaseRunnerWithShareMap = func(role types.RunnerRole, shareMap map[p
 		// Get sample instance for share and key set
 		var keySetInstance *TestKeySet
 		var shareInstance *types.Share
-		// TODO: remove share loop
 		for _, share := range shareMap {
+			shareSample = share
 			keySetInstance = KeySetForShare(share)
 			shareInstance = TestingShare(keySetInstance, share.ValidatorIndex)
 			break
@@ -161,7 +162,7 @@ var ConstructBaseRunnerWithShareMap = func(role types.RunnerRole, shareMap map[p
 	case types.RoleAggregator:
 		runner, err = ssv.NewAggregatorRunner(
 			types.BeaconTestNetwork,
-			shareMap,
+			shareSample,
 			contr,
 			NewTestingBeaconNode(),
 			net,
@@ -173,7 +174,7 @@ var ConstructBaseRunnerWithShareMap = func(role types.RunnerRole, shareMap map[p
 	case types.RoleProposer:
 		runner, err = ssv.NewProposerRunner(
 			types.BeaconTestNetwork,
-			shareMap,
+			shareSample,
 			contr,
 			NewTestingBeaconNode(),
 			net,
@@ -185,7 +186,7 @@ var ConstructBaseRunnerWithShareMap = func(role types.RunnerRole, shareMap map[p
 	case types.RoleSyncCommitteeContribution:
 		runner, err = ssv.NewSyncCommitteeAggregatorRunner(
 			types.BeaconTestNetwork,
-			shareMap,
+			shareSample,
 			contr,
 			NewTestingBeaconNode(),
 			net,
@@ -197,7 +198,7 @@ var ConstructBaseRunnerWithShareMap = func(role types.RunnerRole, shareMap map[p
 	case types.RoleValidatorRegistration:
 		runner, err = ssv.NewValidatorRegistrationRunner(
 			types.BeaconTestNetwork,
-			shareMap,
+			shareSample,
 			NewTestingBeaconNode(),
 			net,
 			km,
@@ -206,7 +207,7 @@ var ConstructBaseRunnerWithShareMap = func(role types.RunnerRole, shareMap map[p
 	case types.RoleVoluntaryExit:
 		runner, err = ssv.NewVoluntaryExitRunner(
 			types.BeaconTestNetwork,
-			shareMap,
+			shareSample,
 			NewTestingBeaconNode(),
 			net,
 			km,
@@ -317,7 +318,7 @@ var ConstructBaseRunner = func(role types.RunnerRole, keySet *TestKeySet) (ssv.R
 	case types.RoleAggregator:
 		runner, err = ssv.NewAggregatorRunner(
 			types.BeaconTestNetwork,
-			shareMap,
+			share,
 			contr,
 			NewTestingBeaconNode(),
 			net,
@@ -329,7 +330,7 @@ var ConstructBaseRunner = func(role types.RunnerRole, keySet *TestKeySet) (ssv.R
 	case types.RoleProposer:
 		runner, err = ssv.NewProposerRunner(
 			types.BeaconTestNetwork,
-			shareMap,
+			share,
 			contr,
 			NewTestingBeaconNode(),
 			net,
@@ -341,7 +342,7 @@ var ConstructBaseRunner = func(role types.RunnerRole, keySet *TestKeySet) (ssv.R
 	case types.RoleSyncCommitteeContribution:
 		runner, err = ssv.NewSyncCommitteeAggregatorRunner(
 			types.BeaconTestNetwork,
-			shareMap,
+			share,
 			contr,
 			NewTestingBeaconNode(),
 			net,
@@ -353,7 +354,7 @@ var ConstructBaseRunner = func(role types.RunnerRole, keySet *TestKeySet) (ssv.R
 	case types.RoleValidatorRegistration:
 		runner, err = ssv.NewValidatorRegistrationRunner(
 			types.BeaconTestNetwork,
-			shareMap,
+			share,
 			NewTestingBeaconNode(),
 			net,
 			km,
@@ -362,7 +363,7 @@ var ConstructBaseRunner = func(role types.RunnerRole, keySet *TestKeySet) (ssv.R
 	case types.RoleVoluntaryExit:
 		runner, err = ssv.NewVoluntaryExitRunner(
 			types.BeaconTestNetwork,
-			shareMap,
+			share,
 			NewTestingBeaconNode(),
 			net,
 			km,

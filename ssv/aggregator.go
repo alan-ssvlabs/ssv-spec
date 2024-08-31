@@ -12,6 +12,7 @@ import (
 type AggregatorRunner struct {
 	BaseRunner *BaseRunner
 
+	share          *types.Share
 	beacon         BeaconNode
 	network        Network
 	signer         types.BeaconSigner
@@ -21,7 +22,7 @@ type AggregatorRunner struct {
 
 func NewAggregatorRunner(
 	beaconNetwork types.BeaconNetwork,
-	share map[phase0.ValidatorIndex]*types.Share,
+	share *types.Share,
 	qbftController *qbft.Controller,
 	beacon BeaconNode,
 	network Network,
@@ -31,19 +32,15 @@ func NewAggregatorRunner(
 	highestDecidedSlot phase0.Slot,
 ) (Runner, error) {
 
-	if len(share) != 1 {
-		return nil, errors.New("must have one share")
-	}
-
 	return &AggregatorRunner{
 		BaseRunner: &BaseRunner{
 			RunnerRoleType:     types.RoleAggregator,
 			BeaconNetwork:      beaconNetwork,
-			Share:              share,
 			QBFTController:     qbftController,
 			highestDecidedSlot: highestDecidedSlot,
 		},
 
+		share:          share,
 		beacon:         beacon,
 		network:        network,
 		signer:         signer,
@@ -62,7 +59,9 @@ func (r *AggregatorRunner) HasRunningDuty() bool {
 }
 
 func (r *AggregatorRunner) ProcessPreConsensus(signedMsg *types.PartialSignatureMessages) error {
-	quorum, roots, err := r.BaseRunner.basePreConsensusMsgProcessing(r, signedMsg)
+	// The runner has only one share
+	shareMap := map[phase0.ValidatorIndex]*types.Share{r.GetShare().ValidatorIndex: r.GetShare()}
+	quorum, roots, err := r.BaseRunner.basePreConsensusMsgProcessing(r, signedMsg, shareMap)
 	if err != nil {
 		return errors.Wrap(err, "failed processing selection proof message")
 	}
@@ -127,10 +126,8 @@ func (r *AggregatorRunner) ProcessConsensus(signedMsg *types.SignedSSVMessage) e
 	}
 
 	// specific duty sig
-	msg, err := r.BaseRunner.signBeaconObject(r, r.BaseRunner.State.StartingDuty.(*types.ValidatorDuty),
-		aggregateAndProof,
-		decidedValue.(*types.ValidatorConsensusData).Duty.Slot,
-		types.DomainAggregateAndProof)
+	msg, err := r.BaseRunner.signBeaconObject(r, r.BaseRunner.State.StartingDuty.(*types.ValidatorDuty), aggregateAndProof,
+		decidedValue.(*types.ValidatorConsensusData).Duty.Slot, types.DomainAggregateAndProof, r.GetShare())
 	if err != nil {
 		return errors.Wrap(err, "failed signing attestation data")
 	}
@@ -171,7 +168,9 @@ func (r *AggregatorRunner) ProcessConsensus(signedMsg *types.SignedSSVMessage) e
 }
 
 func (r *AggregatorRunner) ProcessPostConsensus(signedMsg *types.PartialSignatureMessages) error {
-	quorum, roots, err := r.BaseRunner.basePostConsensusMsgProcessing(r, signedMsg)
+	// The runner has only one share
+	shareMap := map[phase0.ValidatorIndex]*types.Share{r.GetShare().ValidatorIndex: r.GetShare()}
+	quorum, roots, err := r.BaseRunner.basePostConsensusMsgProcessing(r, signedMsg, shareMap)
 	if err != nil {
 		return errors.Wrap(err, "failed processing post consensus message")
 	}
@@ -243,7 +242,7 @@ func (r *AggregatorRunner) expectedPostConsensusRootsAndDomain() ([]ssz.HashRoot
 func (r *AggregatorRunner) executeDuty(duty types.Duty) error {
 	// sign selection proof
 	msg, err := r.BaseRunner.signBeaconObject(r, duty.(*types.ValidatorDuty), types.SSZUint64(duty.DutySlot()), duty.DutySlot(),
-		types.DomainSelectionProof)
+		types.DomainSelectionProof, r.GetShare())
 	if err != nil {
 		return errors.Wrap(err, "could not sign randao")
 	}
@@ -296,11 +295,7 @@ func (r *AggregatorRunner) GetBeaconNode() BeaconNode {
 }
 
 func (r *AggregatorRunner) GetShare() *types.Share {
-	// there is only 1 share
-	for _, share := range r.BaseRunner.Share {
-		return share
-	}
-	return nil
+	return r.share
 }
 
 func (r *AggregatorRunner) GetState() *State {

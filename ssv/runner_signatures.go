@@ -1,6 +1,7 @@
 package ssv
 
 import (
+	"github.com/attestantio/go-eth2-client/spec/phase0"
 	spec "github.com/attestantio/go-eth2-client/spec/phase0"
 	ssz "github.com/ferranbt/fastssz"
 	"github.com/herumi/bls-eth-go-binary/bls"
@@ -8,17 +9,14 @@ import (
 	"github.com/ssvlabs/ssv-spec/types"
 )
 
-func (b *BaseRunner) signBeaconObject(runner Runner, duty *types.ValidatorDuty,
-	obj ssz.HashRoot, slot spec.Slot, domainType spec.DomainType) (*types.PartialSignatureMessage, error) {
+func (b *BaseRunner) signBeaconObject(runner Runner, duty *types.ValidatorDuty, obj ssz.HashRoot, slot spec.Slot, domainType spec.DomainType, share *types.Share) (*types.PartialSignatureMessage, error) {
 	epoch := runner.GetBaseRunner().BeaconNetwork.EstimatedEpochAtSlot(slot)
 	domain, err := runner.GetBeaconNode().DomainData(epoch, domainType)
 	if err != nil {
 		return nil, errors.Wrap(err, "could not get beacon domain")
 	}
 
-	sig, r, err := runner.GetSigner().SignBeaconObject(obj, domain,
-		runner.GetBaseRunner().Share[duty.ValidatorIndex].SharePubKey,
-		domainType)
+	sig, r, err := runner.GetSigner().SignBeaconObject(obj, domain, share.SharePubKey, domainType)
 	if err != nil {
 		return nil, errors.Wrap(err, "could not sign beacon object")
 	}
@@ -35,6 +33,7 @@ func (b *BaseRunner) signBeaconObject(runner Runner, duty *types.ValidatorDuty,
 func (b *BaseRunner) validatePartialSigMsgForSlot(
 	psigMsgs *types.PartialSignatureMessages,
 	slot spec.Slot,
+	committee []types.OperatorID,
 ) error {
 	if err := psigMsgs.Validate(); err != nil {
 		return errors.Wrap(err, "PartialSignatureMessages invalid")
@@ -46,22 +45,10 @@ func (b *BaseRunner) validatePartialSigMsgForSlot(
 	// Get signer
 	msgSigner := psigMsgs.Messages[0].Signer // signer is the same in all psigMsgs.Messages and len(psigMsgs.Messages) > 0 (guaranteed by psigMsgs.Validate())
 
-	// TODO: remove share loop
-	// Get committee (unique for runner)
-	var shareSample *types.Share
-	for _, share := range b.Share {
-		shareSample = share
-		break
-	}
-	if shareSample == nil {
-		return errors.New("can not get committee because there is no share in runner")
-	}
-	committee := shareSample.Committee
-
 	// Check if signer is in committee
 	signerInCommittee := false
 	for _, operator := range committee {
-		if operator.Signer == msgSigner {
+		if operator == msgSigner {
 			signerInCommittee = true
 			break
 		}
@@ -74,21 +61,24 @@ func (b *BaseRunner) validatePartialSigMsgForSlot(
 }
 
 // Validate if runner has a share for each ValidatorIndex in the PartialSignatureMessages.Messages
-func (b *BaseRunner) validateValidatorIndexInPartialSigMsg(
-	psigMsgs *types.PartialSignatureMessages,
-) error {
+func (b *BaseRunner) validateValidatorIndexInPartialSigMsg(psigMsgs *types.PartialSignatureMessages, validatorIndexesInShare []phase0.ValidatorIndex) error {
 	for _, msg := range psigMsgs.Messages {
 		// Check if it has the validator index share
-		_, ok := b.Share[msg.ValidatorIndex]
-		if !ok {
+		hasShare := false
+		for _, index := range validatorIndexesInShare {
+			if msg.ValidatorIndex == index {
+				hasShare = true
+				break
+			}
+		}
+		if !hasShare {
 			return errors.New("unknown validator index")
 		}
 	}
 	return nil
 }
 
-func (b *BaseRunner) verifyBeaconPartialSignature(signer types.OperatorID, signature types.Signature, root [32]byte,
-	committee []*types.ShareMember) error {
+func (b *BaseRunner) verifyBeaconPartialSignature(signer types.OperatorID, signature types.Signature, root [32]byte, committee []*types.ShareMember) error {
 	for _, n := range committee {
 		if n.Signer == signer {
 			pk := &bls.PublicKey{}
@@ -111,12 +101,11 @@ func (b *BaseRunner) verifyBeaconPartialSignature(signer types.OperatorID, signa
 }
 
 // Stores the container's existing signature or the new one, depending on their validity. If both are invalid, remove the existing one
-func (b *BaseRunner) resolveDuplicateSignature(container *PartialSigContainer, msg *types.PartialSignatureMessage) {
+func (b *BaseRunner) resolveDuplicateSignature(container *PartialSigContainer, msg *types.PartialSignatureMessage, committee []*types.ShareMember) {
 	// Check previous signature validity
 	previousSignature, err := container.GetSignature(msg.ValidatorIndex, msg.Signer, msg.SigningRoot)
 	if err == nil {
-		err = b.verifyBeaconPartialSignature(msg.Signer, previousSignature, msg.SigningRoot,
-			b.Share[msg.ValidatorIndex].Committee)
+		err = b.verifyBeaconPartialSignature(msg.Signer, previousSignature, msg.SigningRoot, committee)
 		if err == nil {
 			// Keep the previous sigature since it's correct
 			return
@@ -127,8 +116,7 @@ func (b *BaseRunner) resolveDuplicateSignature(container *PartialSigContainer, m
 	container.Remove(msg.ValidatorIndex, msg.Signer, msg.SigningRoot)
 
 	// Hold the new signature, if correct
-	err = b.verifyBeaconPartialSignature(msg.Signer, msg.PartialSignature, msg.SigningRoot,
-		b.Share[msg.ValidatorIndex].Committee)
+	err = b.verifyBeaconPartialSignature(msg.Signer, msg.PartialSignature, msg.SigningRoot, committee)
 	if err == nil {
 		container.AddSignature(msg)
 	}

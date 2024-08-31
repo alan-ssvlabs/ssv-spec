@@ -13,6 +13,7 @@ import (
 type ValidatorRegistrationRunner struct {
 	BaseRunner *BaseRunner
 
+	share          *types.Share
 	beacon         BeaconNode
 	network        Network
 	signer         types.BeaconSigner
@@ -22,24 +23,20 @@ type ValidatorRegistrationRunner struct {
 
 func NewValidatorRegistrationRunner(
 	beaconNetwork types.BeaconNetwork,
-	share map[phase0.ValidatorIndex]*types.Share,
+	share *types.Share,
 	beacon BeaconNode,
 	network Network,
 	signer types.BeaconSigner,
 	operatorSigner *types.OperatorSigner,
 ) (Runner, error) {
 
-	if len(share) != 1 {
-		return nil, errors.New("must have one share")
-	}
-
 	return &ValidatorRegistrationRunner{
 		BaseRunner: &BaseRunner{
 			RunnerRoleType: types.RoleValidatorRegistration,
 			BeaconNetwork:  beaconNetwork,
-			Share:          share,
 		},
 
+		share:          share,
 		beacon:         beacon,
 		network:        network,
 		signer:         signer,
@@ -58,7 +55,9 @@ func (r *ValidatorRegistrationRunner) HasRunningDuty() bool {
 }
 
 func (r *ValidatorRegistrationRunner) ProcessPreConsensus(signedMsg *types.PartialSignatureMessages) error {
-	quorum, roots, err := r.BaseRunner.basePreConsensusMsgProcessing(r, signedMsg)
+	// The runner has only one share
+	shareMap := map[phase0.ValidatorIndex]*types.Share{r.GetShare().ValidatorIndex: r.GetShare()}
+	quorum, roots, err := r.BaseRunner.basePreConsensusMsgProcessing(r, signedMsg, shareMap)
 	if err != nil {
 		return errors.Wrap(err, "failed processing validator registration message")
 	}
@@ -126,8 +125,7 @@ func (r *ValidatorRegistrationRunner) executeDuty(duty types.Duty) error {
 	}
 
 	// sign partial randao
-	msg, err := r.BaseRunner.signBeaconObject(r, duty.(*types.ValidatorDuty), vr, duty.DutySlot(),
-		types.DomainApplicationBuilder)
+	msg, err := r.BaseRunner.signBeaconObject(r, duty.(*types.ValidatorDuty), vr, duty.DutySlot(), types.DomainApplicationBuilder, r.GetShare())
 	if err != nil {
 		return errors.Wrap(err, "could not sign validator registration")
 	}
@@ -200,11 +198,7 @@ func (r *ValidatorRegistrationRunner) GetBeaconNode() BeaconNode {
 }
 
 func (r *ValidatorRegistrationRunner) GetShare() *types.Share {
-	// TODO: remove loop
-	for _, share := range r.BaseRunner.Share {
-		return share
-	}
-	return nil
+	return r.share
 }
 
 func (r *ValidatorRegistrationRunner) GetState() *State {

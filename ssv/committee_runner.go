@@ -3,6 +3,7 @@ package ssv
 import (
 	"github.com/attestantio/go-eth2-client/spec/altair"
 	"github.com/attestantio/go-eth2-client/spec/phase0"
+	spec "github.com/attestantio/go-eth2-client/spec/phase0"
 	ssz "github.com/ferranbt/fastssz"
 	"github.com/pkg/errors"
 	"github.com/prysmaticlabs/go-bitfield"
@@ -12,6 +13,7 @@ import (
 
 type CommitteeRunner struct {
 	BaseRunner      *BaseRunner
+	Shares          map[spec.ValidatorIndex]*types.Share
 	beacon          BeaconNode
 	network         Network
 	signer          types.BeaconSigner
@@ -21,7 +23,7 @@ type CommitteeRunner struct {
 }
 
 func NewCommitteeRunner(beaconNetwork types.BeaconNetwork,
-	share map[phase0.ValidatorIndex]*types.Share,
+	shares map[phase0.ValidatorIndex]*types.Share,
 	qbftController *qbft.Controller,
 	beacon BeaconNode,
 	network Network,
@@ -29,16 +31,16 @@ func NewCommitteeRunner(beaconNetwork types.BeaconNetwork,
 	operatorSigner *types.OperatorSigner,
 	valCheck qbft.ProposedValueCheckF,
 ) (Runner, error) {
-	if len(share) == 0 {
+	if len(shares) == 0 {
 		return nil, errors.New("no shares")
 	}
 	return &CommitteeRunner{
 		BaseRunner: &BaseRunner{
 			RunnerRoleType: types.RoleCommittee,
 			BeaconNetwork:  beaconNetwork,
-			Share:          share,
 			QBFTController: qbftController,
 		},
+		Shares:          shares,
 		beacon:          beacon,
 		network:         network,
 		signer:          signer,
@@ -102,11 +104,18 @@ func (cr CommitteeRunner) ProcessConsensus(msg *types.SignedSSVMessage) error {
 
 	beaconVote := decidedValue.(*types.BeaconVote)
 	for _, duty := range duty.(*types.CommitteeDuty).ValidatorDuties {
+		var dutyShare *types.Share
+		for _, share := range cr.Shares {
+			if share.ValidatorIndex == duty.ValidatorIndex {
+				dutyShare = share
+				break
+			}
+		}
 		switch duty.Type {
 		case types.BNRoleAttester:
 			attestationData := constructAttestationData(beaconVote, duty)
 			partialMsg, err := cr.BaseRunner.signBeaconObject(cr, duty, attestationData, duty.DutySlot(),
-				types.DomainAttester)
+				types.DomainAttester, dutyShare)
 			if err != nil {
 				return errors.Wrap(err, "failed signing attestation data")
 			}
@@ -115,7 +124,7 @@ func (cr CommitteeRunner) ProcessConsensus(msg *types.SignedSSVMessage) error {
 		case types.BNRoleSyncCommittee:
 			blockRoot := beaconVote.BlockRoot
 			partialMsg, err := cr.BaseRunner.signBeaconObject(cr, duty, types.SSZBytes(blockRoot[:]), duty.DutySlot(),
-				types.DomainSyncCommittee)
+				types.DomainSyncCommittee, dutyShare)
 			if err != nil {
 				return errors.Wrap(err, "failed signing sync committee message")
 			}
@@ -158,7 +167,11 @@ func (cr CommitteeRunner) ProcessConsensus(msg *types.SignedSSVMessage) error {
 
 func (cr CommitteeRunner) ProcessPostConsensus(signedMsg *types.PartialSignatureMessages) error {
 	// Gets all the roots that received a quorum of signatures
-	quorum, rootsList, err := cr.BaseRunner.basePostConsensusMsgProcessing(&cr, signedMsg)
+	shareMap := map[phase0.ValidatorIndex]*types.Share{}
+	for _, share := range cr.Shares {
+		shareMap[share.ValidatorIndex] = share
+	}
+	quorum, rootsList, err := cr.BaseRunner.basePostConsensusMsgProcessing(&cr, signedMsg, shareMap)
 	if err != nil {
 		return errors.Wrap(err, "failed processing post consensus message")
 	}
@@ -208,7 +221,7 @@ func (cr CommitteeRunner) ProcessPostConsensus(signedMsg *types.PartialSignature
 			}
 
 			// Reconstruct signature
-			share := cr.BaseRunner.Share[validator]
+			share := cr.Shares[validator]
 			pubKey := share.ValidatorPubKey
 			sig, err := cr.BaseRunner.State.ReconstructBeaconSig(cr.BaseRunner.State.PostConsensusContainer, root,
 				pubKey[:], validator)
@@ -477,6 +490,13 @@ func (cr CommitteeRunner) executeDuty(duty types.Duty) error {
 
 func (cr CommitteeRunner) GetSigner() types.BeaconSigner {
 	return cr.signer
+}
+
+func (cr CommitteeRunner) GetShare() *types.Share {
+	for _, share := range cr.Shares {
+		return share
+	}
+	return nil
 }
 
 func (cr CommitteeRunner) GetOperatorSigner() *types.OperatorSigner {
