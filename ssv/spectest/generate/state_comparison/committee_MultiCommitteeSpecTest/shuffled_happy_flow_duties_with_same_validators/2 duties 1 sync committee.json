@@ -1066,109 +1066,6 @@
 												]
 										}
 								},
-								"Share": {
-										"1": {
-												"ValidatorIndex": "1",
-												"ValidatorPubKey": [
-														185,
-														150,
-														150,
-														65,
-														132,
-														147,
-														230,
-														243,
-														36,
-														200,
-														247,
-														104,
-														15,
-														77,
-														231,
-														94,
-														151,
-														252,
-														155,
-														223,
-														112,
-														155,
-														147,
-														251,
-														33,
-														20,
-														159,
-														66,
-														103,
-														238,
-														170,
-														186,
-														230,
-														200,
-														157,
-														16,
-														145,
-														101,
-														125,
-														44,
-														84,
-														235,
-														56,
-														125,
-														142,
-														110,
-														56,
-														71
-												],
-												"SharePubKey": "gLgrR03RaqREKLiy5OFUqdNZ3oOzQWF3+IhHMxQ3BEX7avVCdttLSMdxPxfHSt07",
-												"Committee": [
-														{
-																"SharePubKey": "gLgrR03RaqREKLiy5OFUqdNZ3oOzQWF3+IhHMxQ3BEX7avVCdttLSMdxPxfHSt07",
-																"Signer": 1
-														},
-														{
-																"SharePubKey": "obe9FsRzxj+oedZMfz1EWtfNqi8UmHd7HJE7uIxiUhB/f8EKG8iWbSmqYhhjb4b8",
-																"Signer": 2
-														},
-														{
-																"SharePubKey": "sU/L/y6LhnExlmvEKdjoaLhKQ5y9iE37goqmVsZU6oq9a3icoqE6eT1VtcHFlkf9",
-																"Signer": 3
-														},
-														{
-																"SharePubKey": "qSfP2ES1E+nhWm1nLFCjwkxS/oJVaEx6oEqBykh30NU62WvfsWvj+q1xYDjBBgxi",
-																"Signer": 4
-														}
-												],
-												"DomainType": [
-														0,
-														0,
-														3,
-														1
-												],
-												"FeeRecipientAddress": [
-														83,
-														89,
-														83,
-														181,
-														166,
-														4,
-														0,
-														116,
-														148,
-														140,
-														241,
-														133,
-														234,
-														167,
-														210,
-														171,
-														189,
-														102,
-														128,
-														143
-												],
-												"Graffiti": "AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
-										}
-								},
 								"QBFTController": {
 										"Identifier": "AAADAQAAAAAAAAAAAAAAAAAAAAAAAAAAz5et7ttZ4Fv9c6K0wqiIVwjE9PcMhMZLJxIOcqtzO3I=",
 										"Height": 12,
@@ -2264,6 +2161,109 @@
 								},
 								"BeaconNetwork": "now_test_network",
 								"RunnerRoleType": 0
+						},
+						"Shares": {
+								"1": {
+										"ValidatorIndex": "1",
+										"ValidatorPubKey": [
+												185,
+												150,
+												150,
+												65,
+												132,
+												147,
+												230,
+												243,
+												36,
+												200,
+												247,
+												104,
+												15,
+												77,
+												231,
+												94,
+												151,
+												252,
+												155,
+												223,
+												112,
+												155,
+												147,
+												251,
+												33,
+												20,
+												159,
+												66,
+												103,
+												238,
+												170,
+												186,
+												230,
+												200,
+												157,
+												16,
+												145,
+												101,
+												125,
+												44,
+												84,
+												235,
+												56,
+												125,
+												142,
+												110,
+												56,
+												71
+										],
+										"SharePubKey": "gLgrR03RaqREKLiy5OFUqdNZ3oOzQWF3+IhHMxQ3BEX7avVCdttLSMdxPxfHSt07",
+										"Committee": [
+												{
+														"SharePubKey": "gLgrR03RaqREKLiy5OFUqdNZ3oOzQWF3+IhHMxQ3BEX7avVCdttLSMdxPxfHSt07",
+														"Signer": 1
+												},
+												{
+														"SharePubKey": "obe9FsRzxj+oedZMfz1EWtfNqi8UmHd7HJE7uIxiUhB/f8EKG8iWbSmqYhhjb4b8",
+														"Signer": 2
+												},
+												{
+														"SharePubKey": "sU/L/y6LhnExlmvEKdjoaLhKQ5y9iE37goqmVsZU6oq9a3icoqE6eT1VtcHFlkf9",
+														"Signer": 3
+												},
+												{
+														"SharePubKey": "qSfP2ES1E+nhWm1nLFCjwkxS/oJVaEx6oEqBykh30NU62WvfsWvj+q1xYDjBBgxi",
+														"Signer": 4
+												}
+										],
+										"DomainType": [
+												0,
+												0,
+												3,
+												1
+										],
+										"FeeRecipientAddress": [
+												83,
+												89,
+												83,
+												181,
+												166,
+												4,
+												0,
+												116,
+												148,
+												140,
+												241,
+												133,
+												234,
+												167,
+												210,
+												171,
+												189,
+												102,
+												128,
+												143
+										],
+										"Graffiti": "AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+								}
 						}
 				},
 				"13": {
@@ -3330,109 +3330,6 @@
 																]
 														}
 												]
-										}
-								},
-								"Share": {
-										"1": {
-												"ValidatorIndex": "1",
-												"ValidatorPubKey": [
-														185,
-														150,
-														150,
-														65,
-														132,
-														147,
-														230,
-														243,
-														36,
-														200,
-														247,
-														104,
-														15,
-														77,
-														231,
-														94,
-														151,
-														252,
-														155,
-														223,
-														112,
-														155,
-														147,
-														251,
-														33,
-														20,
-														159,
-														66,
-														103,
-														238,
-														170,
-														186,
-														230,
-														200,
-														157,
-														16,
-														145,
-														101,
-														125,
-														44,
-														84,
-														235,
-														56,
-														125,
-														142,
-														110,
-														56,
-														71
-												],
-												"SharePubKey": "gLgrR03RaqREKLiy5OFUqdNZ3oOzQWF3+IhHMxQ3BEX7avVCdttLSMdxPxfHSt07",
-												"Committee": [
-														{
-																"SharePubKey": "gLgrR03RaqREKLiy5OFUqdNZ3oOzQWF3+IhHMxQ3BEX7avVCdttLSMdxPxfHSt07",
-																"Signer": 1
-														},
-														{
-																"SharePubKey": "obe9FsRzxj+oedZMfz1EWtfNqi8UmHd7HJE7uIxiUhB/f8EKG8iWbSmqYhhjb4b8",
-																"Signer": 2
-														},
-														{
-																"SharePubKey": "sU/L/y6LhnExlmvEKdjoaLhKQ5y9iE37goqmVsZU6oq9a3icoqE6eT1VtcHFlkf9",
-																"Signer": 3
-														},
-														{
-																"SharePubKey": "qSfP2ES1E+nhWm1nLFCjwkxS/oJVaEx6oEqBykh30NU62WvfsWvj+q1xYDjBBgxi",
-																"Signer": 4
-														}
-												],
-												"DomainType": [
-														0,
-														0,
-														3,
-														1
-												],
-												"FeeRecipientAddress": [
-														83,
-														89,
-														83,
-														181,
-														166,
-														4,
-														0,
-														116,
-														148,
-														140,
-														241,
-														133,
-														234,
-														167,
-														210,
-														171,
-														189,
-														102,
-														128,
-														143
-												],
-												"Graffiti": "AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
 										}
 								},
 								"QBFTController": {
@@ -4530,6 +4427,109 @@
 								},
 								"BeaconNetwork": "now_test_network",
 								"RunnerRoleType": 0
+						},
+						"Shares": {
+								"1": {
+										"ValidatorIndex": "1",
+										"ValidatorPubKey": [
+												185,
+												150,
+												150,
+												65,
+												132,
+												147,
+												230,
+												243,
+												36,
+												200,
+												247,
+												104,
+												15,
+												77,
+												231,
+												94,
+												151,
+												252,
+												155,
+												223,
+												112,
+												155,
+												147,
+												251,
+												33,
+												20,
+												159,
+												66,
+												103,
+												238,
+												170,
+												186,
+												230,
+												200,
+												157,
+												16,
+												145,
+												101,
+												125,
+												44,
+												84,
+												235,
+												56,
+												125,
+												142,
+												110,
+												56,
+												71
+										],
+										"SharePubKey": "gLgrR03RaqREKLiy5OFUqdNZ3oOzQWF3+IhHMxQ3BEX7avVCdttLSMdxPxfHSt07",
+										"Committee": [
+												{
+														"SharePubKey": "gLgrR03RaqREKLiy5OFUqdNZ3oOzQWF3+IhHMxQ3BEX7avVCdttLSMdxPxfHSt07",
+														"Signer": 1
+												},
+												{
+														"SharePubKey": "obe9FsRzxj+oedZMfz1EWtfNqi8UmHd7HJE7uIxiUhB/f8EKG8iWbSmqYhhjb4b8",
+														"Signer": 2
+												},
+												{
+														"SharePubKey": "sU/L/y6LhnExlmvEKdjoaLhKQ5y9iE37goqmVsZU6oq9a3icoqE6eT1VtcHFlkf9",
+														"Signer": 3
+												},
+												{
+														"SharePubKey": "qSfP2ES1E+nhWm1nLFCjwkxS/oJVaEx6oEqBykh30NU62WvfsWvj+q1xYDjBBgxi",
+														"Signer": 4
+												}
+										],
+										"DomainType": [
+												0,
+												0,
+												3,
+												1
+										],
+										"FeeRecipientAddress": [
+												83,
+												89,
+												83,
+												181,
+												166,
+												4,
+												0,
+												116,
+												148,
+												140,
+												241,
+												133,
+												234,
+												167,
+												210,
+												171,
+												189,
+												102,
+												128,
+												143
+										],
+										"Graffiti": "AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
+								}
 						}
 				}
 		},
