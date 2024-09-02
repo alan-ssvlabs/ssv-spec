@@ -15,7 +15,7 @@ import (
 type SyncCommitteeAggregatorRunner struct {
 	BaseRunner *BaseRunner
 
-	share          *types.Share
+	Share          *types.Share
 	beacon         BeaconNode
 	network        Network
 	signer         types.BeaconSigner
@@ -43,7 +43,7 @@ func NewSyncCommitteeAggregatorRunner(
 			highestDecidedSlot: highestDecidedSlot,
 		},
 
-		share:          share,
+		Share:          share,
 		beacon:         beacon,
 		network:        network,
 		signer:         signer,
@@ -168,7 +168,7 @@ func (r *SyncCommitteeAggregatorRunner) ProcessConsensus(signedMsg *types.Signed
 		}
 
 		signed, err := r.BaseRunner.signBeaconObject(r, r.BaseRunner.State.StartingDuty.(*types.ValidatorDuty), contribAndProof,
-			cd.Duty.Slot, types.DomainContributionAndProof, r.share)
+			cd.Duty.Slot, types.DomainContributionAndProof, r.GetShare())
 		if err != nil {
 			return errors.Wrap(err, "failed to sign aggregate and proof")
 		}
@@ -359,7 +359,7 @@ func (r *SyncCommitteeAggregatorRunner) executeDuty(duty types.Duty) error {
 			SubcommitteeIndex: subnet,
 		}
 		msg, err := r.BaseRunner.signBeaconObject(r, duty.(*types.ValidatorDuty), data, duty.DutySlot(),
-			types.DomainSyncCommitteeSelectionProof, r.share)
+			types.DomainSyncCommitteeSelectionProof, r.GetShare())
 		if err != nil {
 			return errors.Wrap(err, "could not sign sync committee selection proof")
 		}
@@ -410,7 +410,7 @@ func (r *SyncCommitteeAggregatorRunner) GetBeaconNode() BeaconNode {
 }
 
 func (r *SyncCommitteeAggregatorRunner) GetShare() *types.Share {
-	return r.share
+	return r.Share
 }
 
 func (r *SyncCommitteeAggregatorRunner) GetState() *State {

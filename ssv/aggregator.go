@@ -12,7 +12,7 @@ import (
 type AggregatorRunner struct {
 	BaseRunner *BaseRunner
 
-	share          *types.Share
+	Share          *types.Share
 	beacon         BeaconNode
 	network        Network
 	signer         types.BeaconSigner
@@ -40,7 +40,7 @@ func NewAggregatorRunner(
 			highestDecidedSlot: highestDecidedSlot,
 		},
 
-		share:          share,
+		Share:          share,
 		beacon:         beacon,
 		network:        network,
 		signer:         signer,
@@ -295,7 +295,7 @@ func (r *AggregatorRunner) GetBeaconNode() BeaconNode {
 }
 
 func (r *AggregatorRunner) GetShare() *types.Share {
-	return r.share
+	return r.Share
 }
 
 func (r *AggregatorRunner) GetState() *State {

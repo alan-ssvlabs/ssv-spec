@@ -13,7 +13,7 @@ import (
 type VoluntaryExitRunner struct {
 	BaseRunner *BaseRunner
 
-	share          *types.Share
+	Share          *types.Share
 	beacon         BeaconNode
 	network        Network
 	signer         types.BeaconSigner
@@ -38,7 +38,7 @@ func NewVoluntaryExitRunner(
 			BeaconNetwork:  beaconNetwork,
 		},
 
-		share:          share,
+		Share:          share,
 		beacon:         beacon,
 		network:        network,
 		signer:         signer,
@@ -197,7 +197,7 @@ func (r *VoluntaryExitRunner) GetBeaconNode() BeaconNode {
 }
 
 func (r *VoluntaryExitRunner) GetShare() *types.Share {
-	return r.share
+	return r.Share
 }
 
 func (r *VoluntaryExitRunner) GetState() *State {

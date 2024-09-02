@@ -12,7 +12,7 @@ import (
 type ProposerRunner struct {
 	BaseRunner *BaseRunner
 
-	share          *types.Share
+	Share          *types.Share
 	beacon         BeaconNode
 	network        Network
 	signer         types.BeaconSigner
@@ -40,7 +40,7 @@ func NewProposerRunner(
 			highestDecidedSlot: highestDecidedSlot,
 		},
 
-		share:          share,
+		Share:          share,
 		beacon:         beacon,
 		network:        network,
 		signer:         signer,
@@ -332,7 +332,7 @@ func (r *ProposerRunner) GetBeaconNode() BeaconNode {
 }
 
 func (r *ProposerRunner) GetShare() *types.Share {
-	return r.share
+	return r.Share
 }
 
 func (r *ProposerRunner) GetState() *State {

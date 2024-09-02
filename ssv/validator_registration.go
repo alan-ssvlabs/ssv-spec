@@ -13,7 +13,7 @@ import (
 type ValidatorRegistrationRunner struct {
 	BaseRunner *BaseRunner
 
-	share          *types.Share
+	Share          *types.Share
 	beacon         BeaconNode
 	network        Network
 	signer         types.BeaconSigner
@@ -36,7 +36,7 @@ func NewValidatorRegistrationRunner(
 			BeaconNetwork:  beaconNetwork,
 		},
 
-		share:          share,
+		Share:          share,
 		beacon:         beacon,
 		network:        network,
 		signer:         signer,
@@ -198,7 +198,7 @@ func (r *ValidatorRegistrationRunner) GetBeaconNode() BeaconNode {
 }
 
 func (r *ValidatorRegistrationRunner) GetShare() *types.Share {
-	return r.share
+	return r.Share
 }
 
 func (r *ValidatorRegistrationRunner) GetState() *State {
