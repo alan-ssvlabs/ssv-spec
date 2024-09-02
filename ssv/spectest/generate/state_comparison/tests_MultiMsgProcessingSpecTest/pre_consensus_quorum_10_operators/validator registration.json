@@ -39,5 +39,130 @@
 				"QBFTController": null,
 				"BeaconNetwork": "now_test_network",
 				"RunnerRoleType": 4
+		},
+		"Share": {
+				"ValidatorIndex": "1",
+				"ValidatorPubKey": [
+						142,
+						128,
+						6,
+						101,
+						81,
+						168,
+						27,
+						49,
+						130,
+						88,
+						112,
+						158,
+						218,
+						247,
+						221,
+						31,
+						99,
+						205,
+						104,
+						106,
+						14,
+						77,
+						184,
+						178,
+						155,
+						187,
+						122,
+						207,
+						230,
+						86,
+						8,
+						103,
+						122,
+						245,
+						165,
+						39,
+						217,
+						68,
+						142,
+						228,
+						120,
+						53,
+						72,
+						94,
+						2,
+						181,
+						11,
+						192
+				],
+				"SharePubKey": "uaw8M/4ZQSTsUSNYBhD6l6Czq7ScOaI0hAQhUIwIxCsJgy0Pm0FjXeul8TMDRmHx",
+				"Committee": [
+						{
+								"SharePubKey": "uaw8M/4ZQSTsUSNYBhD6l6Czq7ScOaI0hAQhUIwIxCsJgy0Pm0FjXeul8TMDRmHx",
+								"Signer": 1
+						},
+						{
+								"SharePubKey": "kz1pTGkkb5iqKz1t524qR2rdHuj5H6A5SbEVvHoPZ3u5ZGIgBH/krSlDVUVCQlID",
+								"Signer": 2
+						},
+						{
+								"SharePubKey": "oa8IOuuo3GEYpGecefYZvvNk1VYbI8fxLPDSfgQIMZu+/rxyyutWy8+21ul3ilKG",
+								"Signer": 3
+						},
+						{
+								"SharePubKey": "rbbPE1h+tjwTMBvXBq0uQeiY7zjgW8F3SHU/GbiTh6NSfksUWkw4+ePzXeQF/QdH",
+								"Signer": 4
+						},
+						{
+								"SharePubKey": "ovesq67A79GGQk7tkM5WjCDtuuuf9+xT9fGA5wk3pppddGByCSve0md4ED5rGJNo",
+								"Signer": 5
+						},
+						{
+								"SharePubKey": "k0G6HgfsQWNlvKiso3P/s80hTVrPnkjyTPrc0+2uB+PaplJffnFvSdmjkBNW4Mye",
+								"Signer": 6
+						},
+						{
+								"SharePubKey": "jKJiWGQ9GMT6EaPHMt+EWZKfacZB1sXPUXgWYugOJa3hMm1CbTGoRXXnYRS8yz/R",
+								"Signer": 7
+						},
+						{
+								"SharePubKey": "q0rU1AgNbIxwQ0gfqb5DpEbdriONEftFDWGhOesWB/KjAmm7SijrQkMfybi/qNAt",
+								"Signer": 8
+						},
+						{
+								"SharePubKey": "obBtOlWzBdTeziCtVY5FteuDACOmXzBRXfZONryRSaDgvfQlc01s+Qewj67gYRtH",
+								"Signer": 9
+						},
+						{
+								"SharePubKey": "tJ7NtDheMBJsjieXeanh6kC+9ONNv116vN0v2xyqUfEqqfST3Ku/Vx3rhBvtAidF",
+								"Signer": 10
+						}
+				],
+				"DomainType": [
+						0,
+						0,
+						3,
+						1
+				],
+				"FeeRecipientAddress": [
+						83,
+						89,
+						83,
+						181,
+						166,
+						4,
+						0,
+						116,
+						148,
+						140,
+						241,
+						133,
+						234,
+						167,
+						210,
+						171,
+						189,
+						102,
+						128,
+						143
+				],
+				"Graffiti": "AQAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA="
 		}
 }

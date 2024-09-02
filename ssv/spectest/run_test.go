@@ -190,7 +190,6 @@ func parseAndTest(t *testing.T, name string, test interface{}) {
 
 func newRunnerDutySpecTestFromMap(t *testing.T, m map[string]interface{}) *newduty.StartNewRunnerDutySpecTest {
 	runnerMap := m["Runner"].(map[string]interface{})
-	baseRunnerMap := runnerMap["BaseRunner"].(map[string]interface{})
 
 	var testDuty types.Duty
 	if _, ok := m["CommitteeDuty"]; ok {
@@ -228,8 +227,22 @@ func newRunnerDutySpecTestFromMap(t *testing.T, m map[string]interface{}) *newdu
 	}
 
 	shareInstance := &types.Share{}
-	for _, share := range baseRunnerMap["Share"].(map[string]interface{}) {
-		shareBytes, err := json.Marshal(share)
+	// For CommitteeRunner
+	if runnerMap["Shares"] != nil {
+		for _, share := range runnerMap["Shares"].(map[string]interface{}) {
+			shareBytes, err := json.Marshal(share)
+			if err != nil {
+				panic(err)
+			}
+			err = json.Unmarshal(shareBytes, shareInstance)
+			if err != nil {
+				panic(err)
+			}
+		}
+	}
+	// For other runners
+	if runnerMap["Share"] != nil {
+		shareBytes, err := json.Marshal(runnerMap["Share"])
 		if err != nil {
 			panic(err)
 		}
@@ -256,7 +269,6 @@ func newRunnerDutySpecTestFromMap(t *testing.T, m map[string]interface{}) *newdu
 
 func msgProcessingSpecTestFromMap(t *testing.T, m map[string]interface{}) *tests2.MsgProcessingSpecTest {
 	runnerMap := m["Runner"].(map[string]interface{})
-	baseRunnerMap := runnerMap["BaseRunner"].(map[string]interface{})
 
 	var testDuty types.Duty
 	if _, ok := m["CommitteeDuty"]; ok {
@@ -310,8 +322,22 @@ func msgProcessingSpecTestFromMap(t *testing.T, m map[string]interface{}) *tests
 	}
 
 	shareInstance := &types.Share{}
-	for _, share := range baseRunnerMap["Share"].(map[string]interface{}) {
-		shareBytes, err := json.Marshal(share)
+	// For CommitteeRunner
+	if runnerMap["Shares"] != nil {
+		for _, share := range runnerMap["Shares"].(map[string]interface{}) {
+			shareBytes, err := json.Marshal(share)
+			if err != nil {
+				panic(err)
+			}
+			err = json.Unmarshal(shareBytes, shareInstance)
+			if err != nil {
+				panic(err)
+			}
+		}
+	}
+	// For other runners
+	if runnerMap["Share"] != nil {
+		shareBytes, err := json.Marshal(runnerMap["Share"])
 		if err != nil {
 			panic(err)
 		}
