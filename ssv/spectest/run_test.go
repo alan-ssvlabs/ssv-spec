@@ -227,6 +227,7 @@ func newRunnerDutySpecTestFromMap(t *testing.T, m map[string]interface{}) *newdu
 	}
 
 	shareInstance := &types.Share{}
+	shareMap := make(map[phase0.ValidatorIndex]*types.Share)
 	// For CommitteeRunner
 	if runnerMap["Shares"] != nil {
 		for _, share := range runnerMap["Shares"].(map[string]interface{}) {
@@ -238,6 +239,8 @@ func newRunnerDutySpecTestFromMap(t *testing.T, m map[string]interface{}) *newdu
 			if err != nil {
 				panic(err)
 			}
+			shareCopy := *shareInstance
+			shareMap[shareCopy.ValidatorIndex] = &shareCopy
 		}
 	}
 	// For other runners
@@ -254,7 +257,13 @@ func newRunnerDutySpecTestFromMap(t *testing.T, m map[string]interface{}) *newdu
 
 	ks := testingutils.KeySetForShare(shareInstance)
 
+	// runner
 	runner := fixRunnerForRun(t, runnerMap, ks)
+
+	// if runner is committee runner, set share map
+	if committeeRunner, ok := runner.(*ssv.CommitteeRunner); ok {
+		committeeRunner.Shares = shareMap
+	}
 
 	return &newduty.StartNewRunnerDutySpecTest{
 		Name:                    m["Name"].(string),
@@ -322,6 +331,7 @@ func msgProcessingSpecTestFromMap(t *testing.T, m map[string]interface{}) *tests
 	}
 
 	shareInstance := &types.Share{}
+	shareMap := make(map[phase0.ValidatorIndex]*types.Share)
 	// For CommitteeRunner
 	if runnerMap["Shares"] != nil {
 		for _, share := range runnerMap["Shares"].(map[string]interface{}) {
@@ -333,6 +343,8 @@ func msgProcessingSpecTestFromMap(t *testing.T, m map[string]interface{}) *tests
 			if err != nil {
 				panic(err)
 			}
+			shareCopy := *shareInstance
+			shareMap[shareCopy.ValidatorIndex] = &shareCopy
 		}
 	}
 	// For other runners
@@ -351,6 +363,11 @@ func msgProcessingSpecTestFromMap(t *testing.T, m map[string]interface{}) *tests
 
 	// runner
 	runner := fixRunnerForRun(t, runnerMap, ks)
+
+	// if runner is committee runner, set share map
+	if committeeRunner, ok := runner.(*ssv.CommitteeRunner); ok {
+		committeeRunner.Shares = shareMap
+	}
 
 	return &tests2.MsgProcessingSpecTest{
 		Name:                    m["Name"].(string),
