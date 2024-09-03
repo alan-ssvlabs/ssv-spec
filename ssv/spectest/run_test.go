@@ -226,7 +226,6 @@ func newRunnerDutySpecTestFromMap(t *testing.T, m map[string]interface{}) *newdu
 		outputMsgs = append(outputMsgs, typedMsg)
 	}
 
-	shareInstance := &types.Share{}
 	shareMap := make(map[phase0.ValidatorIndex]*types.Share)
 	// For CommitteeRunner
 	if runnerMap["Shares"] != nil {
@@ -235,14 +234,15 @@ func newRunnerDutySpecTestFromMap(t *testing.T, m map[string]interface{}) *newdu
 			if err != nil {
 				panic(err)
 			}
-			err = json.Unmarshal(shareBytes, shareInstance)
+			shareObj := &types.Share{}
+			err = json.Unmarshal(shareBytes, shareObj)
 			if err != nil {
 				panic(err)
 			}
-			shareCopy := *shareInstance
-			shareMap[shareCopy.ValidatorIndex] = &shareCopy
+			shareMap[shareObj.ValidatorIndex] = shareObj
 		}
 	}
+	shareInstance := &types.Share{}
 	// For other runners
 	if runnerMap["Share"] != nil {
 		shareBytes, err := json.Marshal(runnerMap["Share"])
@@ -330,7 +330,6 @@ func msgProcessingSpecTestFromMap(t *testing.T, m map[string]interface{}) *tests
 		}
 	}
 
-	shareInstance := &types.Share{}
 	shareMap := make(map[phase0.ValidatorIndex]*types.Share)
 	// For CommitteeRunner
 	if runnerMap["Shares"] != nil {
@@ -339,14 +338,15 @@ func msgProcessingSpecTestFromMap(t *testing.T, m map[string]interface{}) *tests
 			if err != nil {
 				panic(err)
 			}
-			err = json.Unmarshal(shareBytes, shareInstance)
+			shareObj := &types.Share{}
+			err = json.Unmarshal(shareBytes, shareObj)
 			if err != nil {
 				panic(err)
 			}
-			shareCopy := *shareInstance
-			shareMap[shareCopy.ValidatorIndex] = &shareCopy
+			shareMap[shareObj.ValidatorIndex] = shareObj
 		}
 	}
+	shareInstance := &types.Share{}
 	// For other runners
 	if runnerMap["Share"] != nil {
 		shareBytes, err := json.Marshal(runnerMap["Share"])
