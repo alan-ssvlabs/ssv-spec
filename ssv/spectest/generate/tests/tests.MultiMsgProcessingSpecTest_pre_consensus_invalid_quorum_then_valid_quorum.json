@@ -78,12 +78,6 @@
                   "Signer": 4
                 }
               ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
-              ],
               "FeeRecipientAddress": [
                 83,
                 89,
@@ -168,12 +162,6 @@
                   "OperatorID": 4,
                   "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcVFYenEvNlh0VkVmSlRaL3YxUHcKa3pTa05SWGJwQy80MWE5TFNRdnNra0lDZEcyZEd3K1FhZ2tOVllwdktRc1Izd0F4QmZEb1FxZE1vRXY4R2g5eApCYVphZjZrTFdrbmFWWVlOSmVXbjZiRWlEbVhqVllETXE1ZGhsOW9kOVVoSzRFWVQ4cklmNWFsZnlFYTkrV3M5Cm9lQUxTMjFjVlBwUlBvYlFIeHNYOHhvOXVRQ3JMeE9xYzRFVzgyODVLajV2blFsZnBHRzIxV0ZCZmJIR1I0WGEKK2FtT2ZUS1BsUkxsZVZVTXp3WCs3cGVHSi81SDNqcExGbCtvRmFyMkMvWURIL0VKejArTnE2R0ptNzFpSjdNYwoxK2MwUDZGT2F5NlpxWitaRGo5ZHBKZC9tYnFZenkzcks2YlBvOE52TkVZSFNKZk9SRDRLak5NSXM0UzF5cHhaCkl3SURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                 }
-              ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
               ]
             }
           },
@@ -468,7 +456,7 @@
         }
       ],
       "DecidedSlashable": false,
-      "PostDutyRunnerStateRoot": "312198bd76067ec4686f89305d8037e29b43456a6cca49387ee538090f10d6ee",
+      "PostDutyRunnerStateRoot": "6c06957caba3576559a16a527f0bcf6d956def896da22fdbb31bd81ce68d8ce8",
       "OutputMessages": [
         {
           "Type": 3,
@@ -690,12 +678,6 @@
                   "Signer": 4
                 }
               ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
-              ],
               "FeeRecipientAddress": [
                 83,
                 89,
@@ -780,12 +762,6 @@
                   "OperatorID": 4,
                   "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcVFYenEvNlh0VkVmSlRaL3YxUHcKa3pTa05SWGJwQy80MWE5TFNRdnNra0lDZEcyZEd3K1FhZ2tOVllwdktRc1Izd0F4QmZEb1FxZE1vRXY4R2g5eApCYVphZjZrTFdrbmFWWVlOSmVXbjZiRWlEbVhqVllETXE1ZGhsOW9kOVVoSzRFWVQ4cklmNWFsZnlFYTkrV3M5Cm9lQUxTMjFjVlBwUlBvYlFIeHNYOHhvOXVRQ3JMeE9xYzRFVzgyODVLajV2blFsZnBHRzIxV0ZCZmJIR1I0WGEKK2FtT2ZUS1BsUkxsZVZVTXp3WCs3cGVHSi81SDNqcExGbCtvRmFyMkMvWURIL0VKejArTnE2R0ptNzFpSjdNYwoxK2MwUDZGT2F5NlpxWitaRGo5ZHBKZC9tYnFZenkzcks2YlBvOE52TkVZSFNKZk9SRDRLak5NSXM0UzF5cHhaCkl3SURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                 }
-              ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
               ]
             }
           },
@@ -1080,7 +1056,7 @@
         }
       ],
       "DecidedSlashable": false,
-      "PostDutyRunnerStateRoot": "4e9a5b947d72eeca4f093c9ec589804e2fb0c3f3c1ebc28dfd386c01290f7dfe",
+      "PostDutyRunnerStateRoot": "ee315a59b14865ac126e629fd459f61b80a54d3f8e3835f47fea829c26b4917a",
       "OutputMessages": [
         {
           "Type": 2,
@@ -1219,12 +1195,6 @@
                   "SharePubKey": "p8CidrcKXuM5XH1tJlXtYFKKolLU0h7KX8xSI+UMxCvRaLKAq3q1MXNU3d/PPfnk",
                   "Signer": 4
                 }
-              ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
               ],
               "FeeRecipientAddress": [
                 83,
@@ -1543,7 +1513,7 @@
         }
       ],
       "DecidedSlashable": false,
-      "PostDutyRunnerStateRoot": "fc031c8fab05b9ea649025596e5833148377655357803d604c810c393c328494",
+      "PostDutyRunnerStateRoot": "ee7bed3074fd062ec2bc58af65717f42563e17efb863745c57ba1dda7db73fe2",
       "OutputMessages": [
         {
           "Type": 4,
@@ -1684,12 +1654,6 @@
                   "SharePubKey": "p8CidrcKXuM5XH1tJlXtYFKKolLU0h7KX8xSI+UMxCvRaLKAq3q1MXNU3d/PPfnk",
                   "Signer": 4
                 }
-              ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
               ],
               "FeeRecipientAddress": [
                 83,
@@ -2008,7 +1972,7 @@
         }
       ],
       "DecidedSlashable": false,
-      "PostDutyRunnerStateRoot": "28436718d9535601f59e9eb3ce1797f40968c1ace348bbf735774be888bb632b",
+      "PostDutyRunnerStateRoot": "2b12475c8f2cfd1a210b6e93bc3d92c70b867de2d1b024adbb47c5ed9ee0492b",
       "OutputMessages": [
         {
           "Type": 5,
@@ -2150,12 +2114,6 @@
                   "Signer": 4
                 }
               ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
-              ],
               "FeeRecipientAddress": [
                 83,
                 89,
@@ -2240,12 +2198,6 @@
                   "OperatorID": 4,
                   "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcVFYenEvNlh0VkVmSlRaL3YxUHcKa3pTa05SWGJwQy80MWE5TFNRdnNra0lDZEcyZEd3K1FhZ2tOVllwdktRc1Izd0F4QmZEb1FxZE1vRXY4R2g5eApCYVphZjZrTFdrbmFWWVlOSmVXbjZiRWlEbVhqVllETXE1ZGhsOW9kOVVoSzRFWVQ4cklmNWFsZnlFYTkrV3M5Cm9lQUxTMjFjVlBwUlBvYlFIeHNYOHhvOXVRQ3JMeE9xYzRFVzgyODVLajV2blFsZnBHRzIxV0ZCZmJIR1I0WGEKK2FtT2ZUS1BsUkxsZVZVTXp3WCs3cGVHSi81SDNqcExGbCtvRmFyMkMvWURIL0VKejArTnE2R0ptNzFpSjdNYwoxK2MwUDZGT2F5NlpxWitaRGo5ZHBKZC9tYnFZenkzcks2YlBvOE52TkVZSFNKZk9SRDRLak5NSXM0UzF5cHhaCkl3SURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                 }
-              ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
               ]
             }
           },
@@ -2540,7 +2492,7 @@
         }
       ],
       "DecidedSlashable": false,
-      "PostDutyRunnerStateRoot": "48c69d8799939b092cb80d30f440174d05a14eaab1eb32d576439ea3b59590b1",
+      "PostDutyRunnerStateRoot": "0dcea15d4c34f8932033d6752d90c4edbdca3835d7506f1501bdac7fc0d32447",
       "OutputMessages": [
         {
           "Type": 1,
@@ -2680,12 +2632,6 @@
                   "Signer": 4
                 }
               ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
-              ],
               "FeeRecipientAddress": [
                 83,
                 89,
@@ -2770,12 +2716,6 @@
                   "OperatorID": 4,
                   "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcVFYenEvNlh0VkVmSlRaL3YxUHcKa3pTa05SWGJwQy80MWE5TFNRdnNra0lDZEcyZEd3K1FhZ2tOVllwdktRc1Izd0F4QmZEb1FxZE1vRXY4R2g5eApCYVphZjZrTFdrbmFWWVlOSmVXbjZiRWlEbVhqVllETXE1ZGhsOW9kOVVoSzRFWVQ4cklmNWFsZnlFYTkrV3M5Cm9lQUxTMjFjVlBwUlBvYlFIeHNYOHhvOXVRQ3JMeE9xYzRFVzgyODVLajV2blFsZnBHRzIxV0ZCZmJIR1I0WGEKK2FtT2ZUS1BsUkxsZVZVTXp3WCs3cGVHSi81SDNqcExGbCtvRmFyMkMvWURIL0VKejArTnE2R0ptNzFpSjdNYwoxK2MwUDZGT2F5NlpxWitaRGo5ZHBKZC9tYnFZenkzcks2YlBvOE52TkVZSFNKZk9SRDRLak5NSXM0UzF5cHhaCkl3SURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                 }
-              ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
               ]
             }
           },
@@ -3070,7 +3010,7 @@
         }
       ],
       "DecidedSlashable": false,
-      "PostDutyRunnerStateRoot": "5367ce3832232c7066d1c502413662d1aa59ba04237247a0362391d52ca420c7",
+      "PostDutyRunnerStateRoot": "6ee09eca868f84f607f3c3bbbc92c37307575a456ccddc610f060367a70c2949",
       "OutputMessages": [
         {
           "Type": 1,
@@ -3210,12 +3150,6 @@
                   "Signer": 4
                 }
               ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
-              ],
               "FeeRecipientAddress": [
                 83,
                 89,
@@ -3300,12 +3234,6 @@
                   "OperatorID": 4,
                   "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcVFYenEvNlh0VkVmSlRaL3YxUHcKa3pTa05SWGJwQy80MWE5TFNRdnNra0lDZEcyZEd3K1FhZ2tOVllwdktRc1Izd0F4QmZEb1FxZE1vRXY4R2g5eApCYVphZjZrTFdrbmFWWVlOSmVXbjZiRWlEbVhqVllETXE1ZGhsOW9kOVVoSzRFWVQ4cklmNWFsZnlFYTkrV3M5Cm9lQUxTMjFjVlBwUlBvYlFIeHNYOHhvOXVRQ3JMeE9xYzRFVzgyODVLajV2blFsZnBHRzIxV0ZCZmJIR1I0WGEKK2FtT2ZUS1BsUkxsZVZVTXp3WCs3cGVHSi81SDNqcExGbCtvRmFyMkMvWURIL0VKejArTnE2R0ptNzFpSjdNYwoxK2MwUDZGT2F5NlpxWitaRGo5ZHBKZC9tYnFZenkzcks2YlBvOE52TkVZSFNKZk9SRDRLak5NSXM0UzF5cHhaCkl3SURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                 }
-              ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
               ]
             }
           },
@@ -3600,7 +3528,7 @@
         }
       ],
       "DecidedSlashable": false,
-      "PostDutyRunnerStateRoot": "85ad1ca6fcec384cecb627e51a3a96f657324d9e5d1a1c538872e3aa3c37ffc6",
+      "PostDutyRunnerStateRoot": "a3a495c82d7ab4950d7536891a839a512a7fc00bebd66b2ecdc82c6943048e35",
       "OutputMessages": [
         {
           "Type": 1,
@@ -3740,12 +3668,6 @@
                   "Signer": 4
                 }
               ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
-              ],
               "FeeRecipientAddress": [
                 83,
                 89,
@@ -3830,12 +3752,6 @@
                   "OperatorID": 4,
                   "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcVFYenEvNlh0VkVmSlRaL3YxUHcKa3pTa05SWGJwQy80MWE5TFNRdnNra0lDZEcyZEd3K1FhZ2tOVllwdktRc1Izd0F4QmZEb1FxZE1vRXY4R2g5eApCYVphZjZrTFdrbmFWWVlOSmVXbjZiRWlEbVhqVllETXE1ZGhsOW9kOVVoSzRFWVQ4cklmNWFsZnlFYTkrV3M5Cm9lQUxTMjFjVlBwUlBvYlFIeHNYOHhvOXVRQ3JMeE9xYzRFVzgyODVLajV2blFsZnBHRzIxV0ZCZmJIR1I0WGEKK2FtT2ZUS1BsUkxsZVZVTXp3WCs3cGVHSi81SDNqcExGbCtvRmFyMkMvWURIL0VKejArTnE2R0ptNzFpSjdNYwoxK2MwUDZGT2F5NlpxWitaRGo5ZHBKZC9tYnFZenkzcks2YlBvOE52TkVZSFNKZk9SRDRLak5NSXM0UzF5cHhaCkl3SURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                 }
-              ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
               ]
             }
           },
@@ -4130,7 +4046,7 @@
         }
       ],
       "DecidedSlashable": false,
-      "PostDutyRunnerStateRoot": "8b5c34b81f9d86138e2a4e48a28d49112aebb5caf5f732555ab0e4139b75fff9",
+      "PostDutyRunnerStateRoot": "8115fb161f1898f636c8bf7892a0f1578e6a3c8834ceb765ff3f063bc7c5a5a7",
       "OutputMessages": [
         {
           "Type": 1,

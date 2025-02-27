@@ -107,12 +107,6 @@
                       "OperatorID": 13,
                       "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcWs5ZUxtNmxDY1FlcUpyTXZobGYKaVFFb0pwRlRsd1dZSlpPK0Q4Ri9qU1hOVU1VSERQL0lXdytIa0JWSXVYT3dxdVlxS0VHcnpnSXltcVdXWFZTRwpTOTRCR091NCt6TlN1MWRScHlCaTh6a2d2cDkrdWhsTkVkVksxSUVXVEh6TzZqNm5POHpOOXppbHJ4YnBLQU1FCm5rOXJEQXlEK0k5cDNoMURLUnJrLzQvK1NnTGdTdUNkR1NKM21rdHhSM0lKNDhDYy9WMjFITW5UVkVzajZRNmEKWjJ3ZlcyU2RVTjJic3lPaCt2UWpGTnYwQW5JT2NhVHkvTDNoRDEzKzV5SUxFR2xtQkk5QUNUY2JiMXJScW1nNwpEUi9sU3pwaXVkeWlJK3BuWlZEaEl4SktxOCs5VFlhMjVpN1UxaGlIWmluUnRUMzBVNXdsUEpwQjhqNjUzc25QCkpRSURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                     }
-                  ],
-                  "DomainType": [
-                    0,
-                    0,
-                    3,
-                    1
                   ]
                 },
                 "ID": "AAADAQAAAAAAAAAAAAAAAAAAAAAAAAAA326ltZ8ObAPzkK1f6gu8GZ7DUkwKaCkTFI/Qca8YmOw=",
@@ -265,12 +259,6 @@
                   "Signer": 13
                 }
               ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
-              ],
               "FeeRecipientAddress": [
                 83,
                 89,
@@ -393,12 +381,6 @@
                         "OperatorID": 13,
                         "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcWs5ZUxtNmxDY1FlcUpyTXZobGYKaVFFb0pwRlRsd1dZSlpPK0Q4Ri9qU1hOVU1VSERQL0lXdytIa0JWSXVYT3dxdVlxS0VHcnpnSXltcVdXWFZTRwpTOTRCR091NCt6TlN1MWRScHlCaTh6a2d2cDkrdWhsTkVkVksxSUVXVEh6TzZqNm5POHpOOXppbHJ4YnBLQU1FCm5rOXJEQXlEK0k5cDNoMURLUnJrLzQvK1NnTGdTdUNkR1NKM21rdHhSM0lKNDhDYy9WMjFITW5UVkVzajZRNmEKWjJ3ZlcyU2RVTjJic3lPaCt2UWpGTnYwQW5JT2NhVHkvTDNoRDEzKzV5SUxFR2xtQkk5QUNUY2JiMXJScW1nNwpEUi9sU3pwaXVkeWlJK3BuWlZEaEl4SktxOCs5VFlhMjVpN1UxaGlIWmluUnRUMzBVNXdsUEpwQjhqNjUzc25QCkpRSURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                       }
-                    ],
-                    "DomainType": [
-                      0,
-                      0,
-                      3,
-                      1
                     ]
                   },
                   "ID": "AAADAQAAAAAAAAAAAAAAAAAAAAAAAAAA326ltZ8ObAPzkK1f6gu8GZ7DUkwKaCkTFI/Qca8YmOw=",
@@ -516,12 +498,6 @@
                   "OperatorID": 13,
                   "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcWs5ZUxtNmxDY1FlcUpyTXZobGYKaVFFb0pwRlRsd1dZSlpPK0Q4Ri9qU1hOVU1VSERQL0lXdytIa0JWSXVYT3dxdVlxS0VHcnpnSXltcVdXWFZTRwpTOTRCR091NCt6TlN1MWRScHlCaTh6a2d2cDkrdWhsTkVkVksxSUVXVEh6TzZqNm5POHpOOXppbHJ4YnBLQU1FCm5rOXJEQXlEK0k5cDNoMURLUnJrLzQvK1NnTGdTdUNkR1NKM21rdHhSM0lKNDhDYy9WMjFITW5UVkVzajZRNmEKWjJ3ZlcyU2RVTjJic3lPaCt2UWpGTnYwQW5JT2NhVHkvTDNoRDEzKzV5SUxFR2xtQkk5QUNUY2JiMXJScW1nNwpEUi9sU3pwaXVkeWlJK3BuWlZEaEl4SktxOCs5VFlhMjVpN1UxaGlIWmluUnRUMzBVNXdsUEpwQjhqNjUzc25QCkpRSURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                 }
-              ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
               ]
             }
           },
@@ -1301,12 +1277,6 @@
                       "OperatorID": 13,
                       "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcWs5ZUxtNmxDY1FlcUpyTXZobGYKaVFFb0pwRlRsd1dZSlpPK0Q4Ri9qU1hOVU1VSERQL0lXdytIa0JWSXVYT3dxdVlxS0VHcnpnSXltcVdXWFZTRwpTOTRCR091NCt6TlN1MWRScHlCaTh6a2d2cDkrdWhsTkVkVksxSUVXVEh6TzZqNm5POHpOOXppbHJ4YnBLQU1FCm5rOXJEQXlEK0k5cDNoMURLUnJrLzQvK1NnTGdTdUNkR1NKM21rdHhSM0lKNDhDYy9WMjFITW5UVkVzajZRNmEKWjJ3ZlcyU2RVTjJic3lPaCt2UWpGTnYwQW5JT2NhVHkvTDNoRDEzKzV5SUxFR2xtQkk5QUNUY2JiMXJScW1nNwpEUi9sU3pwaXVkeWlJK3BuWlZEaEl4SktxOCs5VFlhMjVpN1UxaGlIWmluUnRUMzBVNXdsUEpwQjhqNjUzc25QCkpRSURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                     }
-                  ],
-                  "DomainType": [
-                    0,
-                    0,
-                    3,
-                    1
                   ]
                 },
                 "ID": "AAADAQAAAAAAAAAAAAAAAAAAAAAAAAAA326ltZ8ObAPzkK1f6gu8GZ7DUkwKaCkTFI/Qca8YmOw=",
@@ -1463,12 +1433,6 @@
                   "Signer": 13
                 }
               ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
-              ],
               "FeeRecipientAddress": [
                 83,
                 89,
@@ -1591,12 +1555,6 @@
                         "OperatorID": 13,
                         "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcWs5ZUxtNmxDY1FlcUpyTXZobGYKaVFFb0pwRlRsd1dZSlpPK0Q4Ri9qU1hOVU1VSERQL0lXdytIa0JWSXVYT3dxdVlxS0VHcnpnSXltcVdXWFZTRwpTOTRCR091NCt6TlN1MWRScHlCaTh6a2d2cDkrdWhsTkVkVksxSUVXVEh6TzZqNm5POHpOOXppbHJ4YnBLQU1FCm5rOXJEQXlEK0k5cDNoMURLUnJrLzQvK1NnTGdTdUNkR1NKM21rdHhSM0lKNDhDYy9WMjFITW5UVkVzajZRNmEKWjJ3ZlcyU2RVTjJic3lPaCt2UWpGTnYwQW5JT2NhVHkvTDNoRDEzKzV5SUxFR2xtQkk5QUNUY2JiMXJScW1nNwpEUi9sU3pwaXVkeWlJK3BuWlZEaEl4SktxOCs5VFlhMjVpN1UxaGlIWmluUnRUMzBVNXdsUEpwQjhqNjUzc25QCkpRSURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                       }
-                    ],
-                    "DomainType": [
-                      0,
-                      0,
-                      3,
-                      1
                     ]
                   },
                   "ID": "AAADAQAAAAAAAAAAAAAAAAAAAAAAAAAA326ltZ8ObAPzkK1f6gu8GZ7DUkwKaCkTFI/Qca8YmOw=",
@@ -1714,12 +1672,6 @@
                   "OperatorID": 13,
                   "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcWs5ZUxtNmxDY1FlcUpyTXZobGYKaVFFb0pwRlRsd1dZSlpPK0Q4Ri9qU1hOVU1VSERQL0lXdytIa0JWSXVYT3dxdVlxS0VHcnpnSXltcVdXWFZTRwpTOTRCR091NCt6TlN1MWRScHlCaTh6a2d2cDkrdWhsTkVkVksxSUVXVEh6TzZqNm5POHpOOXppbHJ4YnBLQU1FCm5rOXJEQXlEK0k5cDNoMURLUnJrLzQvK1NnTGdTdUNkR1NKM21rdHhSM0lKNDhDYy9WMjFITW5UVkVzajZRNmEKWjJ3ZlcyU2RVTjJic3lPaCt2UWpGTnYwQW5JT2NhVHkvTDNoRDEzKzV5SUxFR2xtQkk5QUNUY2JiMXJScW1nNwpEUi9sU3pwaXVkeWlJK3BuWlZEaEl4SktxOCs5VFlhMjVpN1UxaGlIWmluUnRUMzBVNXdsUEpwQjhqNjUzc25QCkpRSURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                 }
-              ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
               ]
             }
           },
@@ -2503,12 +2455,6 @@
                       "OperatorID": 13,
                       "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcWs5ZUxtNmxDY1FlcUpyTXZobGYKaVFFb0pwRlRsd1dZSlpPK0Q4Ri9qU1hOVU1VSERQL0lXdytIa0JWSXVYT3dxdVlxS0VHcnpnSXltcVdXWFZTRwpTOTRCR091NCt6TlN1MWRScHlCaTh6a2d2cDkrdWhsTkVkVksxSUVXVEh6TzZqNm5POHpOOXppbHJ4YnBLQU1FCm5rOXJEQXlEK0k5cDNoMURLUnJrLzQvK1NnTGdTdUNkR1NKM21rdHhSM0lKNDhDYy9WMjFITW5UVkVzajZRNmEKWjJ3ZlcyU2RVTjJic3lPaCt2UWpGTnYwQW5JT2NhVHkvTDNoRDEzKzV5SUxFR2xtQkk5QUNUY2JiMXJScW1nNwpEUi9sU3pwaXVkeWlJK3BuWlZEaEl4SktxOCs5VFlhMjVpN1UxaGlIWmluUnRUMzBVNXdsUEpwQjhqNjUzc25QCkpRSURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                     }
-                  ],
-                  "DomainType": [
-                    0,
-                    0,
-                    3,
-                    1
                   ]
                 },
                 "ID": "AAADAQAAAAAAAAAAAAAAAAAAAAAAAAAA326ltZ8ObAPzkK1f6gu8GZ7DUkwKaCkTFI/Qca8YmOw=",
@@ -2676,12 +2622,6 @@
                   "Signer": 13
                 }
               ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
-              ],
               "FeeRecipientAddress": [
                 83,
                 89,
@@ -2804,12 +2744,6 @@
                         "OperatorID": 13,
                         "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcWs5ZUxtNmxDY1FlcUpyTXZobGYKaVFFb0pwRlRsd1dZSlpPK0Q4Ri9qU1hOVU1VSERQL0lXdytIa0JWSXVYT3dxdVlxS0VHcnpnSXltcVdXWFZTRwpTOTRCR091NCt6TlN1MWRScHlCaTh6a2d2cDkrdWhsTkVkVksxSUVXVEh6TzZqNm5POHpOOXppbHJ4YnBLQU1FCm5rOXJEQXlEK0k5cDNoMURLUnJrLzQvK1NnTGdTdUNkR1NKM21rdHhSM0lKNDhDYy9WMjFITW5UVkVzajZRNmEKWjJ3ZlcyU2RVTjJic3lPaCt2UWpGTnYwQW5JT2NhVHkvTDNoRDEzKzV5SUxFR2xtQkk5QUNUY2JiMXJScW1nNwpEUi9sU3pwaXVkeWlJK3BuWlZEaEl4SktxOCs5VFlhMjVpN1UxaGlIWmluUnRUMzBVNXdsUEpwQjhqNjUzc25QCkpRSURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                       }
-                    ],
-                    "DomainType": [
-                      0,
-                      0,
-                      3,
-                      1
                     ]
                   },
                   "ID": "AAADAQAAAAAAAAAAAAAAAAAAAAAAAAAA326ltZ8ObAPzkK1f6gu8GZ7DUkwKaCkTFI/Qca8YmOw=",
@@ -2927,12 +2861,6 @@
                   "OperatorID": 13,
                   "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcWs5ZUxtNmxDY1FlcUpyTXZobGYKaVFFb0pwRlRsd1dZSlpPK0Q4Ri9qU1hOVU1VSERQL0lXdytIa0JWSXVYT3dxdVlxS0VHcnpnSXltcVdXWFZTRwpTOTRCR091NCt6TlN1MWRScHlCaTh6a2d2cDkrdWhsTkVkVksxSUVXVEh6TzZqNm5POHpOOXppbHJ4YnBLQU1FCm5rOXJEQXlEK0k5cDNoMURLUnJrLzQvK1NnTGdTdUNkR1NKM21rdHhSM0lKNDhDYy9WMjFITW5UVkVzajZRNmEKWjJ3ZlcyU2RVTjJic3lPaCt2UWpGTnYwQW5JT2NhVHkvTDNoRDEzKzV5SUxFR2xtQkk5QUNUY2JiMXJScW1nNwpEUi9sU3pwaXVkeWlJK3BuWlZEaEl4SktxOCs5VFlhMjVpN1UxaGlIWmluUnRUMzBVNXdsUEpwQjhqNjUzc25QCkpRSURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                 }
-              ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
               ]
             }
           },
@@ -3728,12 +3656,6 @@
                       "OperatorID": 13,
                       "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcWs5ZUxtNmxDY1FlcUpyTXZobGYKaVFFb0pwRlRsd1dZSlpPK0Q4Ri9qU1hOVU1VSERQL0lXdytIa0JWSXVYT3dxdVlxS0VHcnpnSXltcVdXWFZTRwpTOTRCR091NCt6TlN1MWRScHlCaTh6a2d2cDkrdWhsTkVkVksxSUVXVEh6TzZqNm5POHpOOXppbHJ4YnBLQU1FCm5rOXJEQXlEK0k5cDNoMURLUnJrLzQvK1NnTGdTdUNkR1NKM21rdHhSM0lKNDhDYy9WMjFITW5UVkVzajZRNmEKWjJ3ZlcyU2RVTjJic3lPaCt2UWpGTnYwQW5JT2NhVHkvTDNoRDEzKzV5SUxFR2xtQkk5QUNUY2JiMXJScW1nNwpEUi9sU3pwaXVkeWlJK3BuWlZEaEl4SktxOCs5VFlhMjVpN1UxaGlIWmluUnRUMzBVNXdsUEpwQjhqNjUzc25QCkpRSURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                     }
-                  ],
-                  "DomainType": [
-                    0,
-                    0,
-                    3,
-                    1
                   ]
                 },
                 "ID": "AAADAQMAAACOgAZlUagbMYJYcJ7a990fY81oag5NuLKbu3rP5lYIZ3r1pSfZRI7keDVIXgK1C8A=",
@@ -3885,12 +3807,6 @@
                   "Signer": 13
                 }
               ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
-              ],
               "FeeRecipientAddress": [
                 83,
                 89,
@@ -4013,12 +3929,6 @@
                         "OperatorID": 13,
                         "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcWs5ZUxtNmxDY1FlcUpyTXZobGYKaVFFb0pwRlRsd1dZSlpPK0Q4Ri9qU1hOVU1VSERQL0lXdytIa0JWSXVYT3dxdVlxS0VHcnpnSXltcVdXWFZTRwpTOTRCR091NCt6TlN1MWRScHlCaTh6a2d2cDkrdWhsTkVkVksxSUVXVEh6TzZqNm5POHpOOXppbHJ4YnBLQU1FCm5rOXJEQXlEK0k5cDNoMURLUnJrLzQvK1NnTGdTdUNkR1NKM21rdHhSM0lKNDhDYy9WMjFITW5UVkVzajZRNmEKWjJ3ZlcyU2RVTjJic3lPaCt2UWpGTnYwQW5JT2NhVHkvTDNoRDEzKzV5SUxFR2xtQkk5QUNUY2JiMXJScW1nNwpEUi9sU3pwaXVkeWlJK3BuWlZEaEl4SktxOCs5VFlhMjVpN1UxaGlIWmluUnRUMzBVNXdsUEpwQjhqNjUzc25QCkpRSURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                       }
-                    ],
-                    "DomainType": [
-                      0,
-                      0,
-                      3,
-                      1
                     ]
                   },
                   "ID": "AAADAQMAAACOgAZlUagbMYJYcJ7a990fY81oag5NuLKbu3rP5lYIZ3r1pSfZRI7keDVIXgK1C8A=",
@@ -4136,12 +4046,6 @@
                   "OperatorID": 13,
                   "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcWs5ZUxtNmxDY1FlcUpyTXZobGYKaVFFb0pwRlRsd1dZSlpPK0Q4Ri9qU1hOVU1VSERQL0lXdytIa0JWSXVYT3dxdVlxS0VHcnpnSXltcVdXWFZTRwpTOTRCR091NCt6TlN1MWRScHlCaTh6a2d2cDkrdWhsTkVkVksxSUVXVEh6TzZqNm5POHpOOXppbHJ4YnBLQU1FCm5rOXJEQXlEK0k5cDNoMURLUnJrLzQvK1NnTGdTdUNkR1NKM21rdHhSM0lKNDhDYy9WMjFITW5UVkVzajZRNmEKWjJ3ZlcyU2RVTjJic3lPaCt2UWpGTnYwQW5JT2NhVHkvTDNoRDEzKzV5SUxFR2xtQkk5QUNUY2JiMXJScW1nNwpEUi9sU3pwaXVkeWlJK3BuWlZEaEl4SktxOCs5VFlhMjVpN1UxaGlIWmluUnRUMzBVNXdsUEpwQjhqNjUzc25QCkpRSURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                 }
-              ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
               ]
             }
           },
@@ -4922,12 +4826,6 @@
                       "OperatorID": 13,
                       "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcWs5ZUxtNmxDY1FlcUpyTXZobGYKaVFFb0pwRlRsd1dZSlpPK0Q4Ri9qU1hOVU1VSERQL0lXdytIa0JWSXVYT3dxdVlxS0VHcnpnSXltcVdXWFZTRwpTOTRCR091NCt6TlN1MWRScHlCaTh6a2d2cDkrdWhsTkVkVksxSUVXVEh6TzZqNm5POHpOOXppbHJ4YnBLQU1FCm5rOXJEQXlEK0k5cDNoMURLUnJrLzQvK1NnTGdTdUNkR1NKM21rdHhSM0lKNDhDYy9WMjFITW5UVkVzajZRNmEKWjJ3ZlcyU2RVTjJic3lPaCt2UWpGTnYwQW5JT2NhVHkvTDNoRDEzKzV5SUxFR2xtQkk5QUNUY2JiMXJScW1nNwpEUi9sU3pwaXVkeWlJK3BuWlZEaEl4SktxOCs5VFlhMjVpN1UxaGlIWmluUnRUMzBVNXdsUEpwQjhqNjUzc25QCkpRSURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                     }
-                  ],
-                  "DomainType": [
-                    0,
-                    0,
-                    3,
-                    1
                   ]
                 },
                 "ID": "AAADAQIAAACOgAZlUagbMYJYcJ7a990fY81oag5NuLKbu3rP5lYIZ3r1pSfZRI7keDVIXgK1C8A=",
@@ -5075,12 +4973,6 @@
                   "Signer": 13
                 }
               ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
-              ],
               "FeeRecipientAddress": [
                 83,
                 89,
@@ -5203,12 +5095,6 @@
                         "OperatorID": 13,
                         "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcWs5ZUxtNmxDY1FlcUpyTXZobGYKaVFFb0pwRlRsd1dZSlpPK0Q4Ri9qU1hOVU1VSERQL0lXdytIa0JWSXVYT3dxdVlxS0VHcnpnSXltcVdXWFZTRwpTOTRCR091NCt6TlN1MWRScHlCaTh6a2d2cDkrdWhsTkVkVksxSUVXVEh6TzZqNm5POHpOOXppbHJ4YnBLQU1FCm5rOXJEQXlEK0k5cDNoMURLUnJrLzQvK1NnTGdTdUNkR1NKM21rdHhSM0lKNDhDYy9WMjFITW5UVkVzajZRNmEKWjJ3ZlcyU2RVTjJic3lPaCt2UWpGTnYwQW5JT2NhVHkvTDNoRDEzKzV5SUxFR2xtQkk5QUNUY2JiMXJScW1nNwpEUi9sU3pwaXVkeWlJK3BuWlZEaEl4SktxOCs5VFlhMjVpN1UxaGlIWmluUnRUMzBVNXdsUEpwQjhqNjUzc25QCkpRSURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                       }
-                    ],
-                    "DomainType": [
-                      0,
-                      0,
-                      3,
-                      1
                     ]
                   },
                   "ID": "AAADAQIAAACOgAZlUagbMYJYcJ7a990fY81oag5NuLKbu3rP5lYIZ3r1pSfZRI7keDVIXgK1C8A=",
@@ -5326,12 +5212,6 @@
                   "OperatorID": 13,
                   "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcWs5ZUxtNmxDY1FlcUpyTXZobGYKaVFFb0pwRlRsd1dZSlpPK0Q4Ri9qU1hOVU1VSERQL0lXdytIa0JWSXVYT3dxdVlxS0VHcnpnSXltcVdXWFZTRwpTOTRCR091NCt6TlN1MWRScHlCaTh6a2d2cDkrdWhsTkVkVksxSUVXVEh6TzZqNm5POHpOOXppbHJ4YnBLQU1FCm5rOXJEQXlEK0k5cDNoMURLUnJrLzQvK1NnTGdTdUNkR1NKM21rdHhSM0lKNDhDYy9WMjFITW5UVkVzajZRNmEKWjJ3ZlcyU2RVTjJic3lPaCt2UWpGTnYwQW5JT2NhVHkvTDNoRDEzKzV5SUxFR2xtQkk5QUNUY2JiMXJScW1nNwpEUi9sU3pwaXVkeWlJK3BuWlZEaEl4SktxOCs5VFlhMjVpN1UxaGlIWmluUnRUMzBVNXdsUEpwQjhqNjUzc25QCkpRSURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                 }
-              ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
               ]
             }
           },
@@ -6106,12 +5986,6 @@
                       "OperatorID": 13,
                       "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcWs5ZUxtNmxDY1FlcUpyTXZobGYKaVFFb0pwRlRsd1dZSlpPK0Q4Ri9qU1hOVU1VSERQL0lXdytIa0JWSXVYT3dxdVlxS0VHcnpnSXltcVdXWFZTRwpTOTRCR091NCt6TlN1MWRScHlCaTh6a2d2cDkrdWhsTkVkVksxSUVXVEh6TzZqNm5POHpOOXppbHJ4YnBLQU1FCm5rOXJEQXlEK0k5cDNoMURLUnJrLzQvK1NnTGdTdUNkR1NKM21rdHhSM0lKNDhDYy9WMjFITW5UVkVzajZRNmEKWjJ3ZlcyU2RVTjJic3lPaCt2UWpGTnYwQW5JT2NhVHkvTDNoRDEzKzV5SUxFR2xtQkk5QUNUY2JiMXJScW1nNwpEUi9sU3pwaXVkeWlJK3BuWlZEaEl4SktxOCs5VFlhMjVpN1UxaGlIWmluUnRUMzBVNXdsUEpwQjhqNjUzc25QCkpRSURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                     }
-                  ],
-                  "DomainType": [
-                    0,
-                    0,
-                    3,
-                    1
                   ]
                 },
                 "ID": "AAADAQIAAACOgAZlUagbMYJYcJ7a990fY81oag5NuLKbu3rP5lYIZ3r1pSfZRI7keDVIXgK1C8A=",
@@ -6259,12 +6133,6 @@
                   "Signer": 13
                 }
               ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
-              ],
               "FeeRecipientAddress": [
                 83,
                 89,
@@ -6387,12 +6255,6 @@
                         "OperatorID": 13,
                         "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcWs5ZUxtNmxDY1FlcUpyTXZobGYKaVFFb0pwRlRsd1dZSlpPK0Q4Ri9qU1hOVU1VSERQL0lXdytIa0JWSXVYT3dxdVlxS0VHcnpnSXltcVdXWFZTRwpTOTRCR091NCt6TlN1MWRScHlCaTh6a2d2cDkrdWhsTkVkVksxSUVXVEh6TzZqNm5POHpOOXppbHJ4YnBLQU1FCm5rOXJEQXlEK0k5cDNoMURLUnJrLzQvK1NnTGdTdUNkR1NKM21rdHhSM0lKNDhDYy9WMjFITW5UVkVzajZRNmEKWjJ3ZlcyU2RVTjJic3lPaCt2UWpGTnYwQW5JT2NhVHkvTDNoRDEzKzV5SUxFR2xtQkk5QUNUY2JiMXJScW1nNwpEUi9sU3pwaXVkeWlJK3BuWlZEaEl4SktxOCs5VFlhMjVpN1UxaGlIWmluUnRUMzBVNXdsUEpwQjhqNjUzc25QCkpRSURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                       }
-                    ],
-                    "DomainType": [
-                      0,
-                      0,
-                      3,
-                      1
                     ]
                   },
                   "ID": "AAADAQIAAACOgAZlUagbMYJYcJ7a990fY81oag5NuLKbu3rP5lYIZ3r1pSfZRI7keDVIXgK1C8A=",
@@ -6510,12 +6372,6 @@
                   "OperatorID": 13,
                   "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcWs5ZUxtNmxDY1FlcUpyTXZobGYKaVFFb0pwRlRsd1dZSlpPK0Q4Ri9qU1hOVU1VSERQL0lXdytIa0JWSXVYT3dxdVlxS0VHcnpnSXltcVdXWFZTRwpTOTRCR091NCt6TlN1MWRScHlCaTh6a2d2cDkrdWhsTkVkVksxSUVXVEh6TzZqNm5POHpOOXppbHJ4YnBLQU1FCm5rOXJEQXlEK0k5cDNoMURLUnJrLzQvK1NnTGdTdUNkR1NKM21rdHhSM0lKNDhDYy9WMjFITW5UVkVzajZRNmEKWjJ3ZlcyU2RVTjJic3lPaCt2UWpGTnYwQW5JT2NhVHkvTDNoRDEzKzV5SUxFR2xtQkk5QUNUY2JiMXJScW1nNwpEUi9sU3pwaXVkeWlJK3BuWlZEaEl4SktxOCs5VFlhMjVpN1UxaGlIWmluUnRUMzBVNXdsUEpwQjhqNjUzc25QCkpRSURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                 }
-              ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
               ]
             }
           },
@@ -7290,12 +7146,6 @@
                       "OperatorID": 13,
                       "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcWs5ZUxtNmxDY1FlcUpyTXZobGYKaVFFb0pwRlRsd1dZSlpPK0Q4Ri9qU1hOVU1VSERQL0lXdytIa0JWSXVYT3dxdVlxS0VHcnpnSXltcVdXWFZTRwpTOTRCR091NCt6TlN1MWRScHlCaTh6a2d2cDkrdWhsTkVkVksxSUVXVEh6TzZqNm5POHpOOXppbHJ4YnBLQU1FCm5rOXJEQXlEK0k5cDNoMURLUnJrLzQvK1NnTGdTdUNkR1NKM21rdHhSM0lKNDhDYy9WMjFITW5UVkVzajZRNmEKWjJ3ZlcyU2RVTjJic3lPaCt2UWpGTnYwQW5JT2NhVHkvTDNoRDEzKzV5SUxFR2xtQkk5QUNUY2JiMXJScW1nNwpEUi9sU3pwaXVkeWlJK3BuWlZEaEl4SktxOCs5VFlhMjVpN1UxaGlIWmluUnRUMzBVNXdsUEpwQjhqNjUzc25QCkpRSURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                     }
-                  ],
-                  "DomainType": [
-                    0,
-                    0,
-                    3,
-                    1
                   ]
                 },
                 "ID": "AAADAQEAAACOgAZlUagbMYJYcJ7a990fY81oag5NuLKbu3rP5lYIZ3r1pSfZRI7keDVIXgK1C8A=",
@@ -7443,12 +7293,6 @@
                   "Signer": 13
                 }
               ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
-              ],
               "FeeRecipientAddress": [
                 83,
                 89,
@@ -7571,12 +7415,6 @@
                         "OperatorID": 13,
                         "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcWs5ZUxtNmxDY1FlcUpyTXZobGYKaVFFb0pwRlRsd1dZSlpPK0Q4Ri9qU1hOVU1VSERQL0lXdytIa0JWSXVYT3dxdVlxS0VHcnpnSXltcVdXWFZTRwpTOTRCR091NCt6TlN1MWRScHlCaTh6a2d2cDkrdWhsTkVkVksxSUVXVEh6TzZqNm5POHpOOXppbHJ4YnBLQU1FCm5rOXJEQXlEK0k5cDNoMURLUnJrLzQvK1NnTGdTdUNkR1NKM21rdHhSM0lKNDhDYy9WMjFITW5UVkVzajZRNmEKWjJ3ZlcyU2RVTjJic3lPaCt2UWpGTnYwQW5JT2NhVHkvTDNoRDEzKzV5SUxFR2xtQkk5QUNUY2JiMXJScW1nNwpEUi9sU3pwaXVkeWlJK3BuWlZEaEl4SktxOCs5VFlhMjVpN1UxaGlIWmluUnRUMzBVNXdsUEpwQjhqNjUzc25QCkpRSURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                       }
-                    ],
-                    "DomainType": [
-                      0,
-                      0,
-                      3,
-                      1
                     ]
                   },
                   "ID": "AAADAQEAAACOgAZlUagbMYJYcJ7a990fY81oag5NuLKbu3rP5lYIZ3r1pSfZRI7keDVIXgK1C8A=",
@@ -7694,12 +7532,6 @@
                   "OperatorID": 13,
                   "SSVOperatorPubKey": "LS0tLS1CRUdJTiBSU0EgUFVCTElDIEtFWS0tLS0tCk1JSUJJakFOQmdrcWhraUc5dzBCQVFFRkFBT0NBUThBTUlJQkNnS0NBUUVBcWs5ZUxtNmxDY1FlcUpyTXZobGYKaVFFb0pwRlRsd1dZSlpPK0Q4Ri9qU1hOVU1VSERQL0lXdytIa0JWSXVYT3dxdVlxS0VHcnpnSXltcVdXWFZTRwpTOTRCR091NCt6TlN1MWRScHlCaTh6a2d2cDkrdWhsTkVkVksxSUVXVEh6TzZqNm5POHpOOXppbHJ4YnBLQU1FCm5rOXJEQXlEK0k5cDNoMURLUnJrLzQvK1NnTGdTdUNkR1NKM21rdHhSM0lKNDhDYy9WMjFITW5UVkVzajZRNmEKWjJ3ZlcyU2RVTjJic3lPaCt2UWpGTnYwQW5JT2NhVHkvTDNoRDEzKzV5SUxFR2xtQkk5QUNUY2JiMXJScW1nNwpEUi9sU3pwaXVkeWlJK3BuWlZEaEl4SktxOCs5VFlhMjVpN1UxaGlIWmluUnRUMzBVNXdsUEpwQjhqNjUzc25QCkpRSURBUUFCCi0tLS0tRU5EIFJTQSBQVUJMSUMgS0VZLS0tLS0K"
                 }
-              ],
-              "DomainType": [
-                0,
-                0,
-                3,
-                1
               ]
             }
           },

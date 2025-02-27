@@ -95,7 +95,7 @@ func (r *PreconfRunner) ProcessConsensus(signedMsg *types.SignedSSVMessage) erro
 		Messages: []*types.PartialSignatureMessage{msg},
 	}
 
-	msgID := types.NewMsgID(r.GetShare().DomainType, r.GetShare().ValidatorPubKey[:], r.BaseRunner.RunnerRoleType)
+	msgID := types.NewMsgID(r.network.GetDomainType(), r.GetShare().ValidatorPubKey[:], r.BaseRunner.RunnerRoleType)
 
 	encodedMsg, err := postConsensusMsg.Encode()
 	if err != nil {
@@ -158,7 +158,7 @@ func (r *PreconfRunner) ProcessPostConsensus(signedMsg *types.PartialSignatureMe
 			return errors.Wrap(err, "could not get preconf request root")
 		}
 
-		if err := r.GetPreconfSidecar().SubmitCommitment(preconfRequest, specSig); err != nil {
+		if err := r.GetPreconfSidecar().SubmitCommitment(preconfRequest.Root, specSig); err != nil {
 			return errors.Wrap(err, "could not submit to Beacon chain reconstructed signed aggregate")
 		}
 	}
@@ -172,24 +172,17 @@ func (r *PreconfRunner) expectedPreConsensusRootsAndDomain() ([]ssz.HashRoot, ph
 
 // expectedPostConsensusRootsAndDomain an INTERNAL function, returns the expected post-consensus roots to sign
 func (r *PreconfRunner) expectedPostConsensusRootsAndDomain() ([]ssz.HashRoot, phase0.DomainType, error) {
-	validatorConsensusData := &types.ValidatorConsensusData{}
-	err := validatorConsensusData.Decode(r.GetState().DecidedValue)
+	cd := &types.ValidatorConsensusData{}
+	err := cd.Decode(r.GetState().DecidedValue)
 	if err != nil {
 		return nil, phase0.DomainType{}, errors.Wrap(err, "could not create consensus data")
 	}
-	if r.decidedBlindedBlock() {
-		_, data, err := validatorConsensusData.GetBlindedBlockData()
-		if err != nil {
-			return nil, phase0.DomainType{}, errors.Wrap(err, "could not get blinded block data")
-		}
-		return []ssz.HashRoot{data}, types.DomainProposer, nil
-	}
 
-	_, data, err := validatorConsensusData.GetBlockData()
+	preconfRequest, err := cd.GetPreconfRequest()
 	if err != nil {
-		return nil, phase0.DomainType{}, errors.Wrap(err, "could not get block data")
+		return nil, phase0.DomainType{}, errors.Wrap(err, "could not get preconf request root")
 	}
-	return []ssz.HashRoot{data}, types.DomainProposer, nil
+	return []ssz.HashRoot{preconfRequest}, phase0.DomainType{}, nil
 }
 
 // executeDuty steps:
@@ -212,7 +205,7 @@ func (r *PreconfRunner) executeDuty(duty types.Duty) error {
 		Messages: []*types.PartialSignatureMessage{msg},
 	}
 
-	msgID := types.NewMsgID(r.GetShare().DomainType, r.GetShare().ValidatorPubKey[:], r.BaseRunner.RunnerRoleType)
+	msgID := types.NewMsgID(r.network.GetDomainType(), r.GetShare().ValidatorPubKey[:], r.BaseRunner.RunnerRoleType)
 
 	encodedMsg, err := msgs.Encode()
 	if err != nil {
