@@ -100,3 +100,7 @@ type BeaconNode interface {
 	VoluntaryExitCalls
 	DomainCalls
 }
+
+type PreconfSidecar interface {
+	SubmitCommitment(requestRoot [32]byte, signature phase0.BLSSignature) error
+}
