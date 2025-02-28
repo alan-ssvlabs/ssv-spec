@@ -72,6 +72,12 @@
           "Signer": 4
         }
       ],
+      "DomainType": [
+        0,
+        0,
+        3,
+        1
+      ],
       "FeeRecipientAddress": [
         83,
         89,
@@ -166,6 +172,12 @@
           "SharePubKey": "h8qwtug/TZC9i6RiA0vy4jHNn+mEE6IEKMkxzeikVMoNMmwNCQUdy8XqR9utzKDk",
           "Signer": 4
         }
+      ],
+      "DomainType": [
+        0,
+        0,
+        3,
+        1
       ],
       "FeeRecipientAddress": [
         83,
@@ -262,6 +274,12 @@
           "Signer": 4
         }
       ],
+      "DomainType": [
+        0,
+        0,
+        3,
+        1
+      ],
       "FeeRecipientAddress": [
         83,
         89,
@@ -356,6 +374,12 @@
           "SharePubKey": "lrXjfGpbjLW/FWZXSVauZFof3BCPUF52MLj7DzhSNKZcLCKSZDTyNGiVaxH+hp6B",
           "Signer": 4
         }
+      ],
+      "DomainType": [
+        0,
+        0,
+        3,
+        1
       ],
       "FeeRecipientAddress": [
         83,
@@ -452,6 +476,12 @@
           "Signer": 4
         }
       ],
+      "DomainType": [
+        0,
+        0,
+        3,
+        1
+      ],
       "FeeRecipientAddress": [
         83,
         89,
@@ -546,6 +576,12 @@
           "SharePubKey": "rlqILdLTHeFOBDozUgD7t1mHo7tsYOGywhWFxr7hbsSmCthreEFnaDqWXY5GJwrl",
           "Signer": 4
         }
+      ],
+      "DomainType": [
+        0,
+        0,
+        3,
+        1
       ],
       "FeeRecipientAddress": [
         83,
@@ -642,6 +678,12 @@
           "Signer": 4
         }
       ],
+      "DomainType": [
+        0,
+        0,
+        3,
+        1
+      ],
       "FeeRecipientAddress": [
         83,
         89,
@@ -736,6 +778,12 @@
           "SharePubKey": "pB9F73gvOW60/Gixv7J5my2z/EjwT/AiPvJUxKKPWv32O1cD3N1W6zH+ohqcsEHu",
           "Signer": 4
         }
+      ],
+      "DomainType": [
+        0,
+        0,
+        3,
+        1
       ],
       "FeeRecipientAddress": [
         83,
@@ -832,6 +880,12 @@
           "Signer": 4
         }
       ],
+      "DomainType": [
+        0,
+        0,
+        3,
+        1
+      ],
       "FeeRecipientAddress": [
         83,
         89,
@@ -926,6 +980,12 @@
           "SharePubKey": "tmxtejLvezeTdX3FsBy5Cl216BGWw0ARl1/0r1ZdqgBSpfZBKOwh4qzTUIg3idqI",
           "Signer": 4
         }
+      ],
+      "DomainType": [
+        0,
+        0,
+        3,
+        1
       ],
       "FeeRecipientAddress": [
         83,

@@ -11,7 +11,8 @@ type CommitteeMember struct {
 	// FaultyNodes is the number of nodes that are considered faulty or malicious in the operator's committee
 	FaultyNodes uint64
 	// All the members of the committee
-	Committee []*Operator `ssz-max:"13"`
+	Committee  []*Operator `ssz-max:"13"`
+	DomainType DomainType  `ssz-size:"4"`
 }
 
 // Operator represents a node in the network that holds an ID and a public key
@@ -36,4 +37,12 @@ func (cm *CommitteeMember) GetQuorum() uint64 {
 
 func (cm *CommitteeMember) HasPartialQuorum(cnt int) bool {
 	return uint64(cnt) >= cm.FaultyNodes+1
+}
+
+func (cm *CommitteeMember) Encode() ([]byte, error) {
+	return cm.MarshalSSZ()
+}
+
+func (cm *CommitteeMember) Decode(data []byte) error {
+	return cm.UnmarshalSSZ(data)
 }
