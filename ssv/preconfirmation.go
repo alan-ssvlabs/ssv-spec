@@ -12,6 +12,7 @@ import (
 type PreconfRunner struct {
 	BaseRunner *BaseRunner
 
+	beacon         BeaconNode
 	preconf        PreconfSidecar
 	network        Network
 	signer         types.BeaconSigner
@@ -23,6 +24,7 @@ func NewPreconfRunner(
 	beaconNetwork types.BeaconNetwork,
 	share map[phase0.ValidatorIndex]*types.Share,
 	qbftController *qbft.Controller,
+	beacon BeaconNode,
 	preconf PreconfSidecar,
 	network Network,
 	signer types.BeaconSigner,
@@ -37,13 +39,14 @@ func NewPreconfRunner(
 
 	return &PreconfRunner{
 		BaseRunner: &BaseRunner{
-			RunnerRoleType:     types.RoleProposer,
+			RunnerRoleType:     types.RolePreconfirmation,
 			BeaconNetwork:      beaconNetwork,
 			Share:              share,
 			QBFTController:     qbftController,
 			highestDecidedSlot: highestDecidedSlot,
 		},
 
+		beacon:         beacon,
 		preconf:        preconf,
 		network:        network,
 		signer:         signer,
@@ -85,7 +88,7 @@ func (r *PreconfRunner) ProcessConsensus(signedMsg *types.SignedSSVMessage) erro
 
 	msg, err := r.BaseRunner.signBeaconObject(r, r.BaseRunner.State.StartingDuty.(*types.ValidatorDuty), requestRoot,
 		cd.Duty.Slot,
-		types.DomainProposer)
+		types.DomainCommitBoost)
 	if err != nil {
 		return errors.Wrap(err, "failed signing attestation data")
 	}
@@ -158,7 +161,7 @@ func (r *PreconfRunner) ProcessPostConsensus(signedMsg *types.PartialSignatureMe
 			return errors.Wrap(err, "could not get preconf request root")
 		}
 
-		if err := r.GetPreconfSidecar().SubmitCommitment(preconfRequest, specSig); err != nil {
+		if err := r.GetPreconfSidecar().SubmitCommitment(preconfRequest.Root, specSig); err != nil {
 			return errors.Wrap(err, "could not submit to Beacon chain reconstructed signed aggregate")
 		}
 	}
@@ -172,72 +175,26 @@ func (r *PreconfRunner) expectedPreConsensusRootsAndDomain() ([]ssz.HashRoot, ph
 
 // expectedPostConsensusRootsAndDomain an INTERNAL function, returns the expected post-consensus roots to sign
 func (r *PreconfRunner) expectedPostConsensusRootsAndDomain() ([]ssz.HashRoot, phase0.DomainType, error) {
-	validatorConsensusData := &types.ValidatorConsensusData{}
-	err := validatorConsensusData.Decode(r.GetState().DecidedValue)
+	cd := &types.ValidatorConsensusData{}
+	err := cd.Decode(r.GetState().DecidedValue)
 	if err != nil {
 		return nil, phase0.DomainType{}, errors.Wrap(err, "could not create consensus data")
 	}
-	if r.decidedBlindedBlock() {
-		_, data, err := validatorConsensusData.GetBlindedBlockData()
-		if err != nil {
-			return nil, phase0.DomainType{}, errors.Wrap(err, "could not get blinded block data")
-		}
-		return []ssz.HashRoot{data}, types.DomainProposer, nil
-	}
 
-	_, data, err := validatorConsensusData.GetBlockData()
+	preconfRequest, err := cd.GetPreconfRequest()
 	if err != nil {
-		return nil, phase0.DomainType{}, errors.Wrap(err, "could not get block data")
+		return nil, phase0.DomainType{}, errors.Wrap(err, "could not get preconf request root")
 	}
-	return []ssz.HashRoot{data}, types.DomainProposer, nil
+	return []ssz.HashRoot{preconfRequest}, phase0.DomainType{}, nil
 }
 
-// executeDuty steps:
-// 1) sign a partial randao sig and wait for 2f+1 partial sigs from peers
-// 2) reconstruct randao and send GetBeaconBlock to BN
-// 3) start consensus on duty + block data
-// 4) Once consensus decides, sign partial block and broadcast
-// 5) collect 2f+1 partial sigs, reconstruct and broadcast valid block sig to the BN
 func (r *PreconfRunner) executeDuty(duty types.Duty) error {
-	// sign partial randao
-	epoch := r.GetBeaconNode().GetBeaconNetwork().EstimatedEpochAtSlot(duty.DutySlot())
-	msg, err := r.BaseRunner.signBeaconObject(r, duty.(*types.ValidatorDuty), types.SSZUint64(epoch), duty.DutySlot(),
-		types.DomainRandao)
+	request, err := r.GetPreconfSidecar().GetNewRequest()
 	if err != nil {
-		return errors.Wrap(err, "could not sign randao")
+		return errors.Wrap(err, "failed to get attestation data")
 	}
-	msgs := &types.PartialSignatureMessages{
-		Type:     types.RandaoPartialSig,
-		Slot:     duty.DutySlot(),
-		Messages: []*types.PartialSignatureMessage{msg},
-	}
-
-	msgID := types.NewMsgID(r.GetShare().DomainType, r.GetShare().ValidatorPubKey[:], r.BaseRunner.RunnerRoleType)
-
-	encodedMsg, err := msgs.Encode()
-	if err != nil {
-		return err
-	}
-
-	ssvMsg := &types.SSVMessage{
-		MsgType: types.SSVPartialSignatureMsgType,
-		MsgID:   msgID,
-		Data:    encodedMsg,
-	}
-
-	sig, err := r.operatorSigner.SignSSVMessage(ssvMsg)
-	if err != nil {
-		return errors.Wrap(err, "could not sign SSVMessage")
-	}
-
-	msgToBroadcast := &types.SignedSSVMessage{
-		Signatures:  [][]byte{sig},
-		OperatorIDs: []types.OperatorID{r.operatorSigner.GetOperatorID()},
-		SSVMessage:  ssvMsg,
-	}
-
-	if err := r.GetNetwork().Broadcast(msgToBroadcast.SSVMessage.GetID(), msgToBroadcast); err != nil {
-		return errors.Wrap(err, "can't broadcast partial randao sig")
+	if err := r.BaseRunner.decide(r, duty.DutySlot(), &request); err != nil {
+		return errors.Wrap(err, "can't start new duty runner instance for duty")
 	}
 	return nil
 }
