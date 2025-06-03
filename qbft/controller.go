@@ -72,17 +72,9 @@ func (c *Controller) ProcessMsg(signedMessage *types.SignedSSVMessage) (*types.S
 	/**
 	Main controller processing flow
 	_______________________________
-	All decided msgs are processed the same, out of instance
 	All valid future msgs are saved in a container and can trigger highest decided futuremsg
 	All other msgs (not future or decided) are processed normally by an existing instance (if found)
 	*/
-	isDecided, err := IsDecidedMsg(c.CommitteeMember, msg)
-	if err != nil {
-		return nil, err
-	}
-	if isDecided {
-		return c.UponDecided(msg)
-	}
 
 	isFuture, err := c.isFutureMessage(msg)
 	if err != nil {

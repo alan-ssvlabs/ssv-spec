@@ -18,9 +18,8 @@ import (
 )
 
 type DecidedState struct {
-	DecidedVal         []byte
-	DecidedCnt         uint
-	BroadcastedDecided *types.SignedSSVMessage
+	DecidedVal []byte
+	DecidedCnt uint
 }
 
 type RunInstanceData struct {
@@ -102,7 +101,6 @@ func (test *ControllerSpecTest) testTimer(
 func (test *ControllerSpecTest) testProcessMsg(
 	t *testing.T,
 	contr *qbft.Controller,
-	config qbft.IConfig,
 	runData *RunInstanceData,
 ) error {
 	decidedCnt := 0
@@ -137,7 +135,7 @@ func (test *ControllerSpecTest) runInstanceWithData(
 
 	test.testTimer(t, contr.GetConfig(), runData)
 
-	if err := test.testProcessMsg(t, contr, contr.GetConfig(), runData); err != nil {
+	if err := test.testProcessMsg(t, contr, runData); err != nil {
 		lastErr = err
 	}
 

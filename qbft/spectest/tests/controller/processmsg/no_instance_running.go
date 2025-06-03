@@ -22,6 +22,7 @@ func NoInstanceRunning() tests.SpecTest {
 						[]types.OperatorID{1, 2, 3},
 						50,
 					),
+
 					testingutils.TestingProposalMessageWithHeight(ks.OperatorKeys[1], 1, 2),
 				},
 
