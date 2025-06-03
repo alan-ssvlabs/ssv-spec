@@ -78,8 +78,8 @@ var AllTests = []tests.TestF{
 
 	committeesingleduty.StartDuty,
 	committeesingleduty.StartNoDuty,
-	// committeesingleduty.ValidBeaconVote,
-	// committeesingleduty.WrongBeaconVote,
+	committeesingleduty.ValidBeaconVote,
+	committeesingleduty.WrongBeaconVote,
 	committeesingleduty.Decided,
 	committeesingleduty.HappyFlow,
 	committeesingleduty.PastMessageDutyNotFinished,
@@ -97,8 +97,6 @@ var AllTests = []tests.TestF{
 	committeemultipleduty.ShuffledHappyFlowDutiesWithDifferentValidators,
 	committeemultipleduty.FailedThanSuccessfulDuties,
 
-	// consensus.FutureDecidedNoInstance,
-	// consensus.FutureDecided,
 	// consensus.InvalidDecidedValue,
 	consensus.FutureMessage,
 	consensus.PastMessage,
