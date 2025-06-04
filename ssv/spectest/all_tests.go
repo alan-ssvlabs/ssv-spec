@@ -97,7 +97,6 @@ var AllTests = []tests.TestF{
 	committeemultipleduty.ShuffledHappyFlowDutiesWithDifferentValidators,
 	committeemultipleduty.FailedThanSuccessfulDuties,
 
-	// consensus.InvalidDecidedValue,
 	consensus.FutureMessage,
 	consensus.PastMessage,
 	consensus.PostFinish,
@@ -121,8 +120,8 @@ var AllTests = []tests.TestF{
 	synccommitteeaggregator.NoneAggregatorQuorum,
 	synccommitteeaggregator.AllAggregatorQuorum,
 
-	// proposer.ProposeBlindedBlockDecidedRegular,
-	// proposer.ProposeRegularBlockDecidedBlinded,
+	proposer.ProposeBlindedBlockDecidedRegular,
+	proposer.ProposeRegularBlockDecidedBlinded,
 	proposer.BlindedRunnerAcceptsNormalBlock,
 	proposer.NormalProposerAcceptsBlindedBlock,
 

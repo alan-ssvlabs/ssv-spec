@@ -29,7 +29,7 @@ var AllTests = []tests.TestF{
 	processmsg.SingleConsensusMsg,
 	processmsg.FullDecided,
 	processmsg.InvalidIdentifier,
-	// processmsg.NoInstanceRunning,
+	processmsg.NoInstanceRunning,
 
 	latemsg.LateCommit,
 	latemsg.LateCommitPastRound,
